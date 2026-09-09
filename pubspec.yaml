@@ -1,0 +1,58 @@
+name: routineflow_app
+description: "Routine Flow - Personal Routine + University Routine = One Unified Daily Schedule"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.6.1
+
+  # Navigation & Routing
+  go_router: ^14.8.1
+
+  # Networking & HTTP
+  dio: ^5.8.0+1
+
+  # Local Storage & Security
+  flutter_secure_storage: ^9.2.4
+  shared_preferences: ^2.5.2
+  path_provider: ^2.1.5
+  path: ^1.9.0
+
+  # Supabase Backend
+  supabase_flutter: ^2.8.0
+
+  # Drift Local SQLite Database
+  drift: ^2.24.0
+  drift_flutter: ^0.2.0
+
+  # Date, Time & Utilities
+  intl: ^0.20.2
+  uuid: ^4.5.1
+  equatable: ^2.0.7
+
+  # Analytics & Charts
+  fl_chart: ^0.70.2
+
+  # Icons
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+
