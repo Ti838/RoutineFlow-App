@@ -61,39 +61,39 @@ class CurrentActivityCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: (isUni ? AppColors.university : AppColors.study).withAlpha(25),
-                        borderRadius: AppRadius.radiusMd,
-                      ),
-                      child: Icon(
-                        isUni ? Icons.school : Icons.book_outlined,
-                        size: 20,
-                        color: isUni ? AppColors.university : AppColors.study,
-                      ),
-                    ),
-                    const SizedBox(width: AppSpacing.md),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          act.title,
-                          style: AppTypography.heading3.copyWith(fontWeight: FontWeight.w700),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          '${act.startTime} – ${act.endTime}',
-                          style: AppTypography.caption.copyWith(color: AppColors.textSecondaryLight),
-                        ),
-                      ],
-                    ),
-                  ],
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: (isUni ? AppColors.university : AppColors.study).withAlpha(25),
+                    borderRadius: AppRadius.radiusMd,
+                  ),
+                  child: Icon(
+                    isUni ? Icons.school : Icons.book_outlined,
+                    size: 20,
+                    color: isUni ? AppColors.university : AppColors.study,
+                  ),
                 ),
+                const SizedBox(width: AppSpacing.md),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        act.title,
+                        style: AppTypography.heading3.copyWith(fontWeight: FontWeight.w700),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        '${act.startTime} – ${act.endTime}',
+                        style: AppTypography.caption.copyWith(color: AppColors.textSecondaryLight),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: AppSpacing.sm),
                 StatusBadge.ongoing(),
               ],
             ),
