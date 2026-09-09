@@ -183,13 +183,13 @@ class UniversityScreen extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 8),
-          Text(c.title, style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.bold)),
+          Text(c.title, style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.bold), maxLines: 1, overflow: TextOverflow.ellipsis),
           const SizedBox(height: 4),
           Row(
             children: [
               const Icon(Icons.person_outline, size: 16, color: AppColors.textSecondaryLight),
               const SizedBox(width: 4),
-              Text(c.instructor, style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight)),
+              Expanded(child: Text(c.instructor, style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight), maxLines: 1, overflow: TextOverflow.ellipsis)),
             ],
           ),
           const SizedBox(height: 2),
@@ -197,7 +197,7 @@ class UniversityScreen extends ConsumerWidget {
             children: [
               const Icon(Icons.meeting_room_outlined, size: 16, color: AppColors.textSecondaryLight),
               const SizedBox(width: 4),
-              Text(c.room, style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight)),
+              Expanded(child: Text(c.room, style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight), maxLines: 1, overflow: TextOverflow.ellipsis)),
             ],
           ),
         ],
@@ -241,8 +241,8 @@ class UniversityScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(e.courseCode, style: AppTypography.caption.copyWith(fontWeight: FontWeight.bold, color: AppColors.error)),
-                Text(e.courseTitle, style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.bold)),
-                Text('Room: ${e.room} • Weight: ${e.weightage.toInt()}%', style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight)),
+                Text(e.courseTitle, style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.bold), maxLines: 1, overflow: TextOverflow.ellipsis),
+                Text('Room: ${e.room} • Weight: ${e.weightage.toInt()}%', style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight), maxLines: 1, overflow: TextOverflow.ellipsis),
               ],
             ),
           ),

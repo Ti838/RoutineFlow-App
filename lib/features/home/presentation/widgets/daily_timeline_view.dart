@@ -101,6 +101,8 @@ class DailyTimelineView extends StatelessWidget {
                         decoration: act.isCompleted ? TextDecoration.lineThrough : null,
                         color: act.isCompleted ? AppColors.textMutedLight : null,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   const SizedBox(width: 8),
