@@ -48,32 +48,36 @@ Modern university students lead fragmented lives. Their academic timetable is ma
 **Routine Flow** eliminates this cognitive overload by uniting academic schedules, university announcements, personal habits, time-blocked daily goals, and exam countdowns into a single, cohesive, offline-capable application.
 
 ```mermaid
-mindmap
-  root((Routine Flow))
-    University Stream
-      Auto-import Academic Routine
-      Course Offerings & Section Sync
-      Exam Countdown & Deadlines
-      Class Announcements & CR Updates
-    Personal Stream
-      Flexible & Fixed Daily Habits
-      Ad-hoc Tasks & Prioritization
-      Daily Goal Alignment
-      Focus Timers & Streaks
-    Intelligence Layer
-      AI Routine Parser (OCR/PDF/Text)
-      Clash & Conflict Detection
-      Adaptive Free-Time Slot Allocation
-      Intelligent Habit Nudge
-    Collaboration & Social
-      Class Study Circles
-      Realtime Group Discussion
-      Resource & Note Sharing
-    Monetization & Payments
-      Freemium Core Student Tier
-      Pro AI Student Subscription
-      Local Payments (bKash/Nagad/SSLCommerz)
-      Global Cards & App Stores
+graph TD
+    Root["🎯 Routine Flow Platform"] --> Uni["🏫 University Stream"]
+    Root --> Pers["⚡ Personal Stream"]
+    Root --> Intel["🤖 Intelligence Layer"]
+    Root --> Collab["💬 Collaboration & Social"]
+    Root --> Pay["💳 Monetization & Payments"]
+
+    Uni --> U1["Auto-import Academic Routine"]
+    Uni --> U2["Course Offerings & Section Sync"]
+    Uni --> U3["Exam Countdown & Deadlines"]
+    Uni --> U4["Class Announcements & CR Updates"]
+
+    Pers --> P1["Flexible & Fixed Daily Habits"]
+    Pers --> P2["Ad-hoc Tasks & Prioritization"]
+    Pers --> P3["Daily Goal Alignment"]
+    Pers --> P4["Focus Timers & Streaks"]
+
+    Intel --> I1["AI Routine Parser (OCR/PDF/Text)"]
+    Intel --> I2["Clash & Conflict Detection"]
+    Intel --> I3["Adaptive Free-Time Slot Allocation"]
+    Intel --> I4["Intelligent Habit Nudges"]
+
+    Collab --> C1["Class Study Circles"]
+    Collab --> C2["Realtime Group Discussion"]
+    Collab --> C3["Resource & Note Sharing"]
+
+    Pay --> M1["Freemium Core Student Tier"]
+    Pay --> M2["Pro AI Student Subscription"]
+    Pay --> M3["Local Payments (bKash/Nagad/SSLCommerz)"]
+    Pay --> M4["Global Cards & App Stores"]
 ```
 
 ---
