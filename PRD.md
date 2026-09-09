@@ -29,7 +29,8 @@ Every feature in Routine Flow is engineered to answer one fundamental question w
 | :--- | :--- | :--- |
 | **University Student (Timon)** | "My classes change rooms, I have assignments due, and I struggle to find uninterrupted time to study without conflicting with my fitness or personal routines." | Unifies LMS timetables with personal tasks, alerts on schedule conflicts in advance, and discovers free-time study windows. |
 | **Working Student / Freelancer** | "I work part-time around my university lectures. When a class is rescheduled, my work shifts get disrupted." | Real-time clash detection alerts the user immediately and recommends optimal rescheduling slots. |
-| **Department Timetable Admin** | "Broadcasting room changes or class rescheduling through bulletin boards or messaging groups causes confusion." | Dedicated Campus Admin Portal enables 1-click timetable broadcasting with push notification alerts to all enrolled students. |
+| **Class Representative (CR)** | "Broadcasting room changes or exam dates through chaotic chat groups leads to missed deadlines." | Dedicated Batch Announcement & Chat Channels with pinned deadlines and automatic schedule updates. |
+| **Department Timetable Admin** | "Broadcasting room changes or class rescheduling through bulletin boards causes campus confusion." | Centralized Routine Management enabling 1-click timetable broadcasting with push notification alerts to all enrolled students. |
 
 ---
 
@@ -39,17 +40,19 @@ Every feature in Routine Flow is engineered to answer one fundamental question w
 - Eliminate cognitive overload caused by juggling multiple calendar and task apps.
 - Provide zero-latency, offline-capable schedule views on any device.
 - Empower students to balance GPA targets with physical and mental well-being.
+- Enable frictionless peer collaboration and class communications without distractions.
 
 ### 3.2 Quantitative Target Metrics
 - **Daily Active Users (DAU) Engagement**: >85% of users checking "My Day" 3+ times daily.
 - **Conflict Resolution Rate**: >90% of schedule clashes resolved in under 2 clicks.
 - **Offline Reliability**: 100% offline data retention with zero lost edits on network reconnect.
+- **Free-to-Paid Conversion**: 5-8% conversion to Routine Flow Pro via local/global payments.
 
 ---
 
-## 4. Detailed Feature Breakdown
+## 4. Comprehensive Feature Ecosystem
 
-### 4.1 "My Day" Unified Daily Engine
+### 4.1 "My Day" Unified Daily Cockpit
 - **Current Activity Card**: Prominently highlights the active task or university class with countdown timer, room number, instructor name, and completion controls.
 - **Next Up Banner**: Previews the upcoming commitment with remaining preparation time.
 - **Conflict Alert Card**: Flags overlapping activities (e.g., study session clashing with an urgent lab class) and suggests 1-tap resolutions.
@@ -58,20 +61,41 @@ Every feature in Routine Flow is engineered to answer one fundamental question w
 
 ### 4.2 University Academic Suite
 - **Class Timetable Sync**: Automatically organizes weekly recurring lecture slots by course code, section, faculty, and classroom.
-- **Exam Countdown & Syllabus Tracker**: Displays upcoming midterm and final exams with percentage weightage and room allocations.
-- **Assignment Deadline Manager**: Countdown timers for assignment submissions with direct submission links.
-- **Campus Noticeboard**: Official department announcements and emergency timetable changes.
+- **Exam Countdown Hub**: Categorizes Midterms, Finals, and Quizzes with real-time countdown clocks.
+- **Assignment & Lab Tracker**: Prioritized submission deadlines with milestone checkboxes.
 
-### 4.3 Habits & Streak Architecture
-- **Multi-Frequency Habits**: Daily, 5-day weekday, and custom frequency routines.
-- **Streak & Longest Streak Tracking**: Motivation engine rewarding consistent daily completion.
-- **Time-of-Day Categorization**: Morning, Afternoon, Evening, and All-Day habit filtering.
+### 4.3 Habits & Productivity Engine
+- **Flexible & Fixed Habits**: Daily routines (e.g., Morning Workout, Reading, Code Practice) with recurring alarms.
+- **Streak Tracker & Heatmaps**: Visual consistency analytics with fire streaks and motivational badges.
+- **Smart Task Management**: Time-blocked task lists with priority tags (High, Medium, Low).
 
-### 4.4 AI Planner Studio (Powered by Gemini 1.5 Flash)
-- **Daily Routine Synthesis**: Evaluates pending to-do tasks, wake/sleep preferences, and fixed university classes to generate an optimized focus schedule.
-- **Exam Sprint Auto-Scheduler**: Spreads revision topics across open free-time slots in the 14 days preceding an exam.
+### 4.4 Real-Time Class Chat & Collaboration
+- **Batch Announcement Channel**: CR-managed broadcast channel for important class notices and schedule revisions.
+- **Course Discussion Rooms**: Topic-specific chat channels for each enrolled course (e.g., `CSE-201: Data Structures`).
+- **Peer Direct Messaging**: 1-on-1 messaging and study-partner matching.
+- **File & Resource Sharing**: Upload lecture slides, class notes, and past question papers.
 
-### 4.5 Monetization & Subscription Tiers
-- **Free Student Tier**: Core schedule sync, manual logging, basic conflict detection, up to 3 active habits.
-- **Pro Student ($4.99/mo or $39.99/yr)**: Unlimited habits & goals, full AI Daily Planner, Exam Sprint optimizer, and multi-device cloud backup.
-- **Campus Enterprise**: Direct university LMS integration, automated timetable ingestion, and official faculty office hour booking.
+### 4.5 AI Intelligent Planner (Edge & Cloud Assisted)
+- **OCR Routine Ingestion**: Upload photo or PDF of class timetable -> Gemini/OCR parses and populates the routine automatically.
+- **Exam Study Blueprinting**: Enter syllabus topics -> AI breaks down daily 45-minute revision blocks into free schedule gaps.
+- **Smart Schedule Rebalancing**: Auto-adjusts personal habits when surprise makeup classes are scheduled.
+
+### 4.6 Payment Gateways & Monetization Suite
+- **Local Payment Gateways (Bangladesh & Regional)**:
+  - **bKash Tokenized Checkout**: 1-click recurring or monthly MFS payments.
+  - **Nagad Direct Gateway**: Fast mobile wallet checkout.
+  - **SSLCommerz / Shurjopay**: Multi-card (Visa, Mastercard, Amex, DBBL Nexus) support.
+- **International & App Store Payments**:
+  - **Stripe Elements**: Credit/Debit card subscriptions worldwide.
+  - **Google Play In-App Billing** & **Apple StoreKit**: Native operating system subscriptions.
+- **Tier Structure**:
+  - **Free Tier**: Complete local routine management, habits, tasks, offline storage.
+  - **Pro Tier ($1.99 / ৳150 mo)**: AI Timetable OCR, Smart Exam Planner, Cloud Backup, Unlimited Study Groups.
+  - **Institutional Tier**: Campus-wide site license for university departments.
+
+---
+
+## 5. Non-Functional Requirements
+- **Performance**: Cold start $< 800\text{ms}$, frame rendering at stable 60 FPS (120 FPS on supported high-refresh screens).
+- **Offline Capability**: 100% core features functional with no network connection.
+- **Security**: Data isolation enforced at database engine level via Row-Level Security (RLS) and encrypted local storage.
