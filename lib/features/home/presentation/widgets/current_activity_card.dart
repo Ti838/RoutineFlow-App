@@ -10,7 +10,7 @@ import '../../../activities/domain/models/activity.dart';
 class CurrentActivityCard extends StatelessWidget {
   final Activity? activity;
 
-  const CurrentActivityCard({Key? key, this.activity}) : super(key: key);
+  const CurrentActivityCard({super.key, this.activity});
 
   @override
   Widget build(BuildContext context) {

@@ -20,7 +20,7 @@ import '../widgets/daily_timeline_view.dart';
 import '../widgets/daily_progress_widget.dart';
 
 class MyDayScreen extends ConsumerWidget {
-  const MyDayScreen({Key? key}) : super(key: key);
+  const MyDayScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -8,7 +8,7 @@ import '../../../../core/services/conflict_detection_service.dart';
 class ConflictCard extends StatelessWidget {
   final List<ScheduleConflict> conflicts;
 
-  const ConflictCard({Key? key, required this.conflicts}) : super(key: key);
+  const ConflictCard({super.key, required this.conflicts});
 
   @override
   Widget build(BuildContext context) {

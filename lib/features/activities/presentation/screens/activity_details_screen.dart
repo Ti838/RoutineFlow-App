@@ -14,7 +14,7 @@ import 'create_edit_activity_sheet.dart';
 class ActivityDetailsScreen extends ConsumerWidget {
   final String activityId;
 
-  const ActivityDetailsScreen({Key? key, required this.activityId}) : super(key: key);
+  const ActivityDetailsScreen({super.key, required this.activityId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

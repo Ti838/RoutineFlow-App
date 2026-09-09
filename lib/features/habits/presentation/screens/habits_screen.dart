@@ -105,7 +105,7 @@ final habitsProvider = StateNotifierProvider<HabitsNotifier, List<HabitItem>>((r
 });
 
 class HabitsScreen extends ConsumerWidget {
-  const HabitsScreen({Key? key}) : super(key: key);
+  const HabitsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -186,7 +186,7 @@ class HabitsScreen extends ConsumerWidget {
                 ],
               ),
             );
-          }).toList(),
+          }),
         ],
       ),
     );

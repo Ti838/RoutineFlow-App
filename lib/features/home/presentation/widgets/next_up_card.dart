@@ -9,7 +9,7 @@ import '../../../activities/domain/models/activity.dart';
 class NextUpCard extends StatelessWidget {
   final Activity? activity;
 
-  const NextUpCard({Key? key, this.activity}) : super(key: key);
+  const NextUpCard({super.key, this.activity});
 
   @override
   Widget build(BuildContext context) {

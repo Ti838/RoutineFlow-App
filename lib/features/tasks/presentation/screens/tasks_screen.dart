@@ -136,7 +136,7 @@ enum TaskFilter { all, today, upcoming, completed }
 final taskFilterProvider = StateProvider<TaskFilter>((ref) => TaskFilter.all);
 
 class TasksScreen extends ConsumerWidget {
-  const TasksScreen({Key? key}) : super(key: key);
+  const TasksScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

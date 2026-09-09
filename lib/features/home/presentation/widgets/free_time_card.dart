@@ -8,7 +8,7 @@ import '../../../../core/services/free_time_service.dart';
 class FreeTimeCard extends StatelessWidget {
   final List<FreeTimeSlot> freeSlots;
 
-  const FreeTimeCard({Key? key, required this.freeSlots}) : super(key: key);
+  const FreeTimeCard({super.key, required this.freeSlots});
 
   @override
   Widget build(BuildContext context) {

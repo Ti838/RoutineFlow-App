@@ -17,7 +17,7 @@ class CreateEditActivitySheet extends ConsumerStatefulWidget {
   final Activity? activityToEdit;
   final DateTime? defaultDate;
 
-  const CreateEditActivitySheet({Key? key, this.activityToEdit, this.defaultDate}) : super(key: key);
+  const CreateEditActivitySheet({super.key, this.activityToEdit, this.defaultDate});
 
   static Future<void> show(BuildContext context, {Activity? activityToEdit, DateTime? defaultDate}) {
     return showModalBottomSheet(
@@ -322,7 +322,7 @@ class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivityShee
                 Text('Recurrence', style: AppTypography.caption.copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: 8),
                 DropdownButtonFormField<RecurrenceType>(
-                  value: _recurrence,
+                  initialValue: _recurrence,
                   decoration: const InputDecoration(prefixIcon: Icon(Icons.repeat)),
                   items: RecurrenceType.values.map((r) => DropdownMenuItem(value: r, child: Text(r.label))).toList(),
                   onChanged: (val) {

@@ -9,7 +9,7 @@ import '../../../activities/domain/models/activity.dart';
 class DailyTimelineView extends StatelessWidget {
   final List<Activity> activities;
 
-  const DailyTimelineView({Key? key, required this.activities}) : super(key: key);
+  const DailyTimelineView({super.key, required this.activities});
 
   @override
   Widget build(BuildContext context) {

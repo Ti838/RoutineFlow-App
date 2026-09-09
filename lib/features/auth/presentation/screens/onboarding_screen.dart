@@ -7,7 +7,7 @@ import '../../../../shared/widgets/app_logo.dart';
 import '../../../../shared/widgets/primary_button.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+  const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -17,7 +17,7 @@ final calendarViewTypeProvider = StateProvider<CalendarViewType>((ref) => Calend
 final calendarSelectedDateProvider = StateProvider<DateTime>((ref) => DateTime.now());
 
 class CalendarScreen extends ConsumerWidget {
-  const CalendarScreen({Key? key}) : super(key: key);
+  const CalendarScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -127,7 +127,7 @@ class CalendarScreen extends ConsumerWidget {
             ),
           )
         else
-          ...dayActivities.map((act) => _buildScheduleEventCard(context, act)).toList(),
+          ...dayActivities.map((act) => _buildScheduleEventCard(context, act)),
       ],
     );
   }

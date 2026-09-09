@@ -26,7 +26,7 @@ class AISuggestionCardData {
 }
 
 class AIPlannerScreen extends ConsumerStatefulWidget {
-  const AIPlannerScreen({Key? key}) : super(key: key);
+  const AIPlannerScreen({super.key});
 
   @override
   ConsumerState<AIPlannerScreen> createState() => _AIPlannerScreenState();
@@ -218,7 +218,7 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
                 child: Text('Suggested Schedule Adjustments', style: AppTypography.heading3),
               ),
               const SizedBox(height: AppSpacing.md),
-              ..._suggestions!.map((s) => _buildSuggestionTile(s)).toList(),
+              ..._suggestions!.map((s) => _buildSuggestionTile(s)),
               const SizedBox(height: AppSpacing.lg),
               PrimaryButton(
                 text: 'Confirm & Apply to Schedule',
