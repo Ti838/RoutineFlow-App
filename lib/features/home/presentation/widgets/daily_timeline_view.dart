@@ -23,11 +23,13 @@ class DailyTimelineView extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const Icon(Icons.event_available_outlined, size: 40, color: AppColors.textMutedLight),
+            const Icon(Icons.event_available_outlined,
+                size: 40, color: AppColors.textMutedLight),
             const SizedBox(height: 12),
             Text(
               'No activities scheduled for this day',
-              style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondaryLight),
+              style: AppTypography.bodyMedium
+                  .copyWith(color: AppColors.textSecondaryLight),
             ),
           ],
         ),
@@ -98,8 +100,10 @@ class DailyTimelineView extends StatelessWidget {
                       act.title,
                       style: AppTypography.bodyMedium.copyWith(
                         fontWeight: FontWeight.w600,
-                        decoration: act.isCompleted ? TextDecoration.lineThrough : null,
-                        color: act.isCompleted ? AppColors.textMutedLight : null,
+                        decoration:
+                            act.isCompleted ? TextDecoration.lineThrough : null,
+                        color:
+                            act.isCompleted ? AppColors.textMutedLight : null,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,

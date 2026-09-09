@@ -10,7 +10,8 @@ import '../providers/university_provider.dart';
 
 enum UniversityTab { classes, exams, deadlines, notices }
 
-final universityTabProvider = StateProvider<UniversityTab>((ref) => UniversityTab.classes);
+final universityTabProvider =
+    StateProvider<UniversityTab>((ref) => UniversityTab.classes);
 
 class UniversityScreen extends ConsumerWidget {
   const UniversityScreen({super.key});
@@ -18,11 +19,14 @@ class UniversityScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTab = ref.watch(universityTabProvider);
-    final isWide = ResponsiveBreakpoints.isMedium(context) || ResponsiveBreakpoints.isExpanded(context);
+    final isWide = ResponsiveBreakpoints.isMedium(context) ||
+        ResponsiveBreakpoints.isExpanded(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('University Routine & Hub', style: AppTypography.heading3.copyWith(fontWeight: FontWeight.bold)),
+        title: Text('University Routine & Hub',
+            style:
+                AppTypography.heading3.copyWith(fontWeight: FontWeight.bold)),
       ),
       body: Column(
         children: [
@@ -37,9 +41,11 @@ class UniversityScreen extends ConsumerWidget {
                   const SizedBox(width: 8),
                   _tabChip(ref, 'Exams', UniversityTab.exams, currentTab),
                   const SizedBox(width: 8),
-                  _tabChip(ref, 'Deadlines', UniversityTab.deadlines, currentTab),
+                  _tabChip(
+                      ref, 'Deadlines', UniversityTab.deadlines, currentTab),
                   const SizedBox(width: 8),
-                  _tabChip(ref, 'Official Notices', UniversityTab.notices, currentTab),
+                  _tabChip(ref, 'Official Notices', UniversityTab.notices,
+                      currentTab),
                 ],
               ),
             ),
@@ -52,7 +58,8 @@ class UniversityScreen extends ConsumerWidget {
     );
   }
 
-  Widget _tabChip(WidgetRef ref, String label, UniversityTab tab, UniversityTab currentTab) {
+  Widget _tabChip(WidgetRef ref, String label, UniversityTab tab,
+      UniversityTab currentTab) {
     final isSelected = tab == currentTab;
     return GestureDetector(
       onTap: () => ref.read(universityTabProvider.notifier).state = tab,
@@ -76,7 +83,8 @@ class UniversityScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildTabContent(BuildContext context, WidgetRef ref, UniversityTab tab, bool isWide) {
+  Widget _buildTabContent(
+      BuildContext context, WidgetRef ref, UniversityTab tab, bool isWide) {
     switch (tab) {
       case UniversityTab.classes:
         final coursesAsync = ref.watch(universityCoursesProvider);
@@ -85,7 +93,8 @@ class UniversityScreen extends ConsumerWidget {
           error: (e, st) => Center(child: Text('Error loading courses: $e')),
           data: (courses) {
             if (courses.isEmpty) {
-              return const Center(child: Text('No university courses enrolled yet.'));
+              return const Center(
+                  child: Text('No university courses enrolled yet.'));
             }
             if (isWide) {
               return GridView.builder(
@@ -97,13 +106,15 @@ class UniversityScreen extends ConsumerWidget {
                   mainAxisSpacing: 16,
                 ),
                 itemCount: courses.length,
-                itemBuilder: (context, idx) => _buildCourseCard(context, courses[idx]),
+                itemBuilder: (context, idx) =>
+                    _buildCourseCard(context, courses[idx]),
               );
             }
             return ListView.builder(
               padding: const EdgeInsets.all(AppSpacing.md),
               itemCount: courses.length,
-              itemBuilder: (context, idx) => _buildCourseCard(context, courses[idx]),
+              itemBuilder: (context, idx) =>
+                  _buildCourseCard(context, courses[idx]),
             );
           },
         );
@@ -120,7 +131,8 @@ class UniversityScreen extends ConsumerWidget {
             return ListView.builder(
               padding: const EdgeInsets.all(AppSpacing.md),
               itemCount: exams.length,
-              itemBuilder: (context, idx) => _buildExamCard(context, exams[idx]),
+              itemBuilder: (context, idx) =>
+                  _buildExamCard(context, exams[idx]),
             );
           },
         );
@@ -129,11 +141,14 @@ class UniversityScreen extends ConsumerWidget {
         return ListView(
           padding: const EdgeInsets.all(AppSpacing.md),
           children: [
-            _deadlineCard('Algorithms Lab Assignment 4', 'CSE 301', 'In 3 days', AppColors.error),
+            _deadlineCard('Algorithms Lab Assignment 4', 'CSE 301', 'In 3 days',
+                AppColors.error),
             const SizedBox(height: 12),
-            _deadlineCard('Database Systems Term Project Phase 1', 'CSE 320', 'In 6 days', AppColors.warning),
+            _deadlineCard('Database Systems Term Project Phase 1', 'CSE 320',
+                'In 6 days', AppColors.warning),
             const SizedBox(height: 12),
-            _deadlineCard('Linear Algebra Problem Set 5', 'MAT 205', 'Next week', AppColors.primary),
+            _deadlineCard('Linear Algebra Problem Set 5', 'MAT 205',
+                'Next week', AppColors.primary),
           ],
         );
 
@@ -142,7 +157,8 @@ class UniversityScreen extends ConsumerWidget {
         return ListView.builder(
           padding: const EdgeInsets.all(AppSpacing.md),
           itemCount: notices.length,
-          itemBuilder: (context, idx) => _buildNoticeCard(context, notices[idx]),
+          itemBuilder: (context, idx) =>
+              _buildNoticeCard(context, notices[idx]),
         );
     }
   }
@@ -178,26 +194,43 @@ class UniversityScreen extends ConsumerWidget {
               ),
               Text(
                 '${c.creditHours} Credits',
-                style: AppTypography.caption.copyWith(color: AppColors.textSecondaryLight),
+                style: AppTypography.caption
+                    .copyWith(color: AppColors.textSecondaryLight),
               ),
             ],
           ),
           const SizedBox(height: 8),
-          Text(c.title, style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.bold), maxLines: 1, overflow: TextOverflow.ellipsis),
+          Text(c.title,
+              style: AppTypography.bodyMedium
+                  .copyWith(fontWeight: FontWeight.bold),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis),
           const SizedBox(height: 4),
           Row(
             children: [
-              const Icon(Icons.person_outline, size: 16, color: AppColors.textSecondaryLight),
+              const Icon(Icons.person_outline,
+                  size: 16, color: AppColors.textSecondaryLight),
               const SizedBox(width: 4),
-              Expanded(child: Text(c.instructor, style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight), maxLines: 1, overflow: TextOverflow.ellipsis)),
+              Expanded(
+                  child: Text(c.instructor,
+                      style: AppTypography.small
+                          .copyWith(color: AppColors.textSecondaryLight),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis)),
             ],
           ),
           const SizedBox(height: 2),
           Row(
             children: [
-              const Icon(Icons.meeting_room_outlined, size: 16, color: AppColors.textSecondaryLight),
+              const Icon(Icons.meeting_room_outlined,
+                  size: 16, color: AppColors.textSecondaryLight),
               const SizedBox(width: 4),
-              Expanded(child: Text(c.room, style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight), maxLines: 1, overflow: TextOverflow.ellipsis)),
+              Expanded(
+                  child: Text(c.room,
+                      style: AppTypography.small
+                          .copyWith(color: AppColors.textSecondaryLight),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis)),
             ],
           ),
         ],
@@ -229,9 +262,12 @@ class UniversityScreen extends ConsumerWidget {
               children: [
                 Text(
                   '$daysLeft',
-                  style: AppTypography.heading3.copyWith(color: AppColors.error, fontWeight: FontWeight.bold),
+                  style: AppTypography.heading3.copyWith(
+                      color: AppColors.error, fontWeight: FontWeight.bold),
                 ),
-                Text('days', style: AppTypography.small.copyWith(color: AppColors.error, fontSize: 10)),
+                Text('days',
+                    style: AppTypography.small
+                        .copyWith(color: AppColors.error, fontSize: 10)),
               ],
             ),
           ),
@@ -240,9 +276,19 @@ class UniversityScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(e.courseCode, style: AppTypography.caption.copyWith(fontWeight: FontWeight.bold, color: AppColors.error)),
-                Text(e.courseTitle, style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.bold), maxLines: 1, overflow: TextOverflow.ellipsis),
-                Text('Room: ${e.room} • Weight: ${e.weightage.toInt()}%', style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight), maxLines: 1, overflow: TextOverflow.ellipsis),
+                Text(e.courseCode,
+                    style: AppTypography.caption.copyWith(
+                        fontWeight: FontWeight.bold, color: AppColors.error)),
+                Text(e.courseTitle,
+                    style: AppTypography.bodyMedium
+                        .copyWith(fontWeight: FontWeight.bold),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis),
+                Text('Room: ${e.room} • Weight: ${e.weightage.toInt()}%',
+                    style: AppTypography.small
+                        .copyWith(color: AppColors.textSecondaryLight),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis),
               ],
             ),
           ),
@@ -251,7 +297,8 @@ class UniversityScreen extends ConsumerWidget {
     );
   }
 
-  Widget _deadlineCard(String title, String course, String timeLeft, Color color) {
+  Widget _deadlineCard(
+      String title, String course, String timeLeft, Color color) {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.md),
       decoration: BoxDecoration(
@@ -267,8 +314,12 @@ class UniversityScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.bold, color: Colors.white)),
-                Text(course, style: AppTypography.caption.copyWith(color: AppColors.textSecondaryDark)),
+                Text(title,
+                    style: AppTypography.bodyMedium.copyWith(
+                        fontWeight: FontWeight.bold, color: Colors.white)),
+                Text(course,
+                    style: AppTypography.caption
+                        .copyWith(color: AppColors.textSecondaryDark)),
               ],
             ),
           ),
@@ -278,7 +329,9 @@ class UniversityScreen extends ConsumerWidget {
               color: color.withAlpha(30),
               borderRadius: AppRadius.radiusSm,
             ),
-            child: Text(timeLeft, style: TextStyle(color: color, fontSize: 11, fontWeight: FontWeight.bold)),
+            child: Text(timeLeft,
+                style: TextStyle(
+                    color: color, fontSize: 11, fontWeight: FontWeight.bold)),
           ),
         ],
       ),
@@ -292,7 +345,10 @@ class UniversityScreen extends ConsumerWidget {
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: AppRadius.radiusMd,
-        border: Border.all(color: n.isUrgent ? AppColors.error.withAlpha(80) : Theme.of(context).dividerColor),
+        border: Border.all(
+            color: n.isUrgent
+                ? AppColors.error.withAlpha(80)
+                : Theme.of(context).dividerColor),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -302,24 +358,34 @@ class UniversityScreen extends ConsumerWidget {
               if (n.isUrgent)
                 Container(
                   margin: const EdgeInsets.only(right: 8),
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                   decoration: BoxDecoration(
                     color: AppColors.error,
                     borderRadius: BorderRadius.circular(4),
                   ),
-                  child: const Text('URGENT', style: TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.bold)),
+                  child: const Text('URGENT',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 9,
+                          fontWeight: FontWeight.bold)),
                 ),
               Expanded(
                 child: Text(
                   n.department,
-                  style: AppTypography.caption.copyWith(color: AppColors.textSecondaryLight),
+                  style: AppTypography.caption
+                      .copyWith(color: AppColors.textSecondaryLight),
                 ),
               ),
-              Text(n.date, style: AppTypography.small.copyWith(color: AppColors.textMutedLight)),
+              Text(n.date,
+                  style: AppTypography.small
+                      .copyWith(color: AppColors.textMutedLight)),
             ],
           ),
           const SizedBox(height: 6),
-          Text(n.title, style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.w600)),
+          Text(n.title,
+              style: AppTypography.bodyMedium
+                  .copyWith(fontWeight: FontWeight.w600)),
         ],
       ),
     );
