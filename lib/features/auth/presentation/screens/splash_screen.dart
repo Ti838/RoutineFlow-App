@@ -22,7 +22,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       if (!mounted) return;
       final authState = ref.read(authNotifierProvider);
       if (authState is Authenticated) {
-        context.go('/app/my-day');
+        context.go('/my-day');
       } else {
         context.go('/onboarding');
       }

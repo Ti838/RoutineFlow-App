@@ -19,7 +19,8 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  final _emailController = TextEditingController(text: 'student@routineflow.app');
+  final _emailController =
+      TextEditingController(text: 'student@routineflow.app');
   final _passwordController = TextEditingController(text: 'password123');
   bool _obscurePassword = true;
 
@@ -42,7 +43,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     await ref.read(authNotifierProvider.notifier).login(email, password);
     final state = ref.read(authNotifierProvider);
     if (state is Authenticated && mounted) {
-      context.go('/app/my-day');
+      context.go('/my-day');
     }
   }
 
@@ -72,7 +73,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   const SizedBox(height: AppSpacing.xs),
                   Text(
                     'Login to continue to your account',
-                    style: AppTypography.body.copyWith(color: AppColors.textSecondaryLight),
+                    style: AppTypography.body
+                        .copyWith(color: AppColors.textSecondaryLight),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: AppSpacing.xxxl),
@@ -91,8 +93,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     prefixIcon: Icons.lock_outline,
                     obscureText: _obscurePassword,
                     suffixIcon: IconButton(
-                      icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility),
-                      onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                      icon: Icon(_obscurePassword
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                      onPressed: () =>
+                          setState(() => _obscurePassword = !_obscurePassword),
                     ),
                   ),
                   Align(
@@ -115,7 +120,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       const Expanded(child: Divider()),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text('OR', style: AppTypography.small.copyWith(color: AppColors.textMutedLight)),
+                        child: Text('OR',
+                            style: AppTypography.small
+                                .copyWith(color: AppColors.textMutedLight)),
                       ),
                       const Expanded(child: Divider()),
                     ],
@@ -123,11 +130,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   const SizedBox(height: AppSpacing.xl),
                   OutlinedButton.icon(
                     onPressed: _submitLogin,
-                    icon: const Icon(Icons.g_mobiledata, size: 28, color: Colors.red),
+                    icon: const Icon(Icons.g_mobiledata,
+                        size: 28, color: Colors.red),
                     label: const Text('Continue with Google'),
                     style: OutlinedButton.styleFrom(
                       minimumSize: const Size.fromHeight(48),
-                      shape: RoundedRectangleBorder(borderRadius: AppRadius.radiusMd),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: AppRadius.radiusMd),
                     ),
                   ),
                   const SizedBox(height: AppSpacing.md),
@@ -137,14 +146,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     label: const Text('Continue with Apple'),
                     style: OutlinedButton.styleFrom(
                       minimumSize: const Size.fromHeight(48),
-                      shape: RoundedRectangleBorder(borderRadius: AppRadius.radiusMd),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: AppRadius.radiusMd),
                     ),
                   ),
                   const SizedBox(height: AppSpacing.xxxl),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Don't have an account? ", style: AppTypography.caption),
+                      Text("Don't have an account? ",
+                          style: AppTypography.caption),
                       GestureDetector(
                         onTap: () => context.go('/register'),
                         child: Text(

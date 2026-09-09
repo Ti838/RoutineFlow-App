@@ -18,19 +18,19 @@ Routine Flow delivers a unified temporal engine merging fixed university class s
 ## 2. Overall System Description & Architecture
 
 ```mermaid
-graph TB
-    subgraph Client Application [Flutter Multiplatform Client]
+flowchart TB
+    subgraph ClientApplication["Flutter Multiplatform Client"]
         View["Presentation Layer (Flutter Widgets / Screens)"]
         State["State Management (Stateful / BLoC / Repositories)"]
         DBLocal["Drift / SQLite Database (Offline Engine)"]
     end
 
-    subgraph Core Engines [Algorithmic Engines]
+    subgraph CoreEngines["Algorithmic Engines"]
         ConflictEng["Conflict Detection & Free-Slot Engine"]
         SyncEng["Offline Mutation Queue & Replay Engine"]
     end
 
-    subgraph Backend Microservices & External Integrations
+    subgraph BackendServices["Backend Microservices & Integrations"]
         AuthServ["Supabase / Firebase Auth (JWT / OAuth)"]
         DBServ["PostgreSQL Cloud Database with RLS"]
         AIEng["AI Intelligence Engine (Gemini / OpenAI)"]

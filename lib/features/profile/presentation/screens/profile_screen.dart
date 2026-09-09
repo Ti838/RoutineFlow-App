@@ -43,7 +43,7 @@ class ProfileScreen extends ConsumerWidget {
                   radius: 32,
                   backgroundColor: AppColors.primaryContainer,
                   child: Text(
-                    user != null && user.name.isNotEmpty ? user.name[0].toUpperCase() : 'T',
+                    user != null && user.name.isNotEmpty ? user.name[0].toUpperCase() : 'U',
                     style: AppTypography.heading2.copyWith(color: AppColors.primary),
                   ),
                 ),

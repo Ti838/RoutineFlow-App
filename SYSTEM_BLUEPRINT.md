@@ -54,15 +54,13 @@ sequenceDiagram
 To ensure students in low-connectivity classrooms never experience loading spinners or data loss, Routine Flow implements a resilient dual-layer data architecture:
 
 ```mermaid
-graph LR
-    subgraph Device
-        A[Flutter UI] --> B[Repository Pattern]
+flowchart LR
+    subgraph DeviceA["Flutter UI"] --> B[Repository Pattern]
         B --> C[(Drift SQLite Local DB)]
         B --> D[Sync Queue Table]
     end
 
-    subgraph Cloud
-        E[Network Listener] -->|Online Trigger| F[Sync Worker]
+    subgraph CloudE["Network Listener"] -->|Online Trigger| F[Sync Worker]
         D --> F
         F --> G[Supabase / PostgreSQL / Firebase]
     end
@@ -84,19 +82,11 @@ graph LR
 University students require fast, structured communication regarding room changes, assignment cancellations, and study group discussions.
 
 ```mermaid
-graph TD
-    subgraph Chat Hierarchy
-        U[🏫 University Level]
-        D[🏛️ Department Level]
-        B[👥 Batch / Section Announcement Room]
-        C[📚 Course-Specific Q&A Channel]
-        P[💬 1-on-1 Direct Messaging]
-    end
-
-    U --> D
-    D --> B
-    D --> C
-    B --> P
+flowchart TD
+    U["🏫 University Level"] --> D["🏛️ Department Level"]
+    D --> B["👥 Batch / Section Announcement Room"]
+    D --> C["📚 Course-Specific Q&A Channel"]
+    B --> P["💬 1-on-1 Direct Messaging"]
     C --> P
 ```
 
@@ -116,7 +106,7 @@ graph TD
 Routine Flow is built for both emerging markets (Bangladesh/South Asia) and international global students:
 
 ```mermaid
-graph LR
+flowchart LR
     A[Student Subscribes to Pro] --> B{Region Selector}
     B -->|Bangladesh / South Asia| C[bKash / Nagad / SSLCommerz]
     B -->|International Card| D[Stripe Elements / Checkout]

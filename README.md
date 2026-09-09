@@ -50,7 +50,7 @@ University students operate in an increasingly fragmented digital ecosystem. Aca
 **ROUTINE FLOW** synthesizes all academic obligations and personal life commitments into a single, cohesive, chronological timeline. It acts as an intelligent daily cockpit that empowers students to maintain high academic performance while preserving personal health, fitness, and career goals.
 
 ```mermaid
-graph TD
+flowchart TD
     Root["🎯 Routine Flow Platform"] --> Uni["🏫 University Stream"]
     Root --> Pers["⚡ Personal Stream"]
     Root --> Intel["🤖 Intelligence Layer"]
@@ -101,25 +101,25 @@ graph TD
 Routine Flow strictly implements **Clean Architecture** and the **Offline-First Reactive Paradigm**:
 
 ```mermaid
-graph TB
-    subgraph Presentation Layer [Presentation Layer (Flutter / Riverpod)]
+flowchart TB
+    subgraph PresentationLayer["Presentation Layer (Flutter / Riverpod)"]
         UI["Screens & Widgets (MyDay, University, Habits, Tasks, Profile)"]
         State["State Notifiers & Providers (Riverpod)"]
     end
 
-    subgraph Domain Layer [Domain Layer (Core Business Logic)]
+    subgraph DomainLayer["Domain Layer (Core Business Logic)"]
         Entities["Domain Models (Activity, CourseOffering, Habit, Task)"]
         Repos["Repository Interfaces"]
         ConflictEngine["Conflict Detection & Free-Time Engine"]
     end
 
-    subgraph Data Layer [Data Layer (Local & Remote Sources)]
+    subgraph DataLayer["Data Layer (Local & Remote Sources)"]
         RepoImpl["Repository Implementations"]
         DriftDB["Drift / SQLite Local DB (Offline Cache)"]
         SyncQ["Offline Mutation Queue"]
     end
 
-    subgraph Cloud Backend [Cloud Backend & Microservices]
+    subgraph CloudBackend["Cloud Backend & Microservices"]
         Supabase["Supabase REST / Realtime / PostgreSQL RLS"]
         AIService["AI Engine (Gemini 1.5 Flash / OpenAI Vision)"]
         PaymentAPI["Payment Gateways (bKash, Nagad, Stripe, SSLCommerz)"]
@@ -185,20 +185,20 @@ graph TB
 
 ```mermaid
 erDiagram
-    UNIVERSITIES ||--o{ ACADEMIC_TERMS : contains
-    UNIVERSITIES ||--o{ DEPARTMENTS : has
-    DEPARTMENTS ||--o{ COURSES : offers
-    COURSES ||--o{ COURSE_OFFERINGS : schedules
-    COURSE_OFFERINGS ||--o{ STUDENT_ENROLLMENTS : enrolls
-    PROFILES ||--o{ STUDENT_ENROLLMENTS : attends
-    PROFILES ||--o{ ACTIVITIES : creates
-    PROFILES ||--o{ TASKS : owns
-    PROFILES ||--o{ HABITS : tracks
-    HABITS ||--o{ HABIT_LOGS : records
-    PROFILES ||--o{ GOALS : pursues
-    PROFILES ||--o{ USER_SUBSCRIPTIONS : maintains
-    USER_SUBSCRIPTIONS ||--o{ PAYMENT_TRANSACTIONS : pays
-    COURSE_OFFERINGS ||--o{ CHAT_MESSAGES : discusses
+    UNIVERSITIES ||--o{ ACADEMIC_TERMS : "contains"
+    UNIVERSITIES ||--o{ DEPARTMENTS : "has"
+    DEPARTMENTS ||--o{ COURSES : "offers"
+    COURSES ||--o{ COURSE_OFFERINGS : "schedules"
+    COURSE_OFFERINGS ||--o{ STUDENT_ENROLLMENTS : "enrolls"
+    PROFILES ||--o{ STUDENT_ENROLLMENTS : "attends"
+    PROFILES ||--o{ ACTIVITIES : "creates"
+    PROFILES ||--o{ TASKS : "owns"
+    PROFILES ||--o{ HABITS : "tracks"
+    HABITS ||--o{ HABIT_LOGS : "records"
+    PROFILES ||--o{ GOALS : "pursues"
+    PROFILES ||--o{ USER_SUBSCRIPTIONS : "maintains"
+    USER_SUBSCRIPTIONS ||--o{ PAYMENT_TRANSACTIONS : "pays"
+    COURSE_OFFERINGS ||--o{ CHAT_MESSAGES : "discusses"
 ```
 
 ---
@@ -292,6 +292,7 @@ flutter run
 | [🛠️ **SYSTEM_BLUEPRINT.md**](SYSTEM_BLUEPRINT.md) | Deep technical integration guide for AI, Databases, Payments & Chat. |
 | [🗺️ **CODE_MAP.md**](CODE_MAP.md) | Comprehensive index of every source file, class, and method. |
 | [⚙️ **SETUP_GUIDE.md**](SETUP_GUIDE.md) | Step-by-step local machine and backend deployment manual. |
+| [🎨 **DESIGN_SYSTEM.md**](DESIGN_SYSTEM.md) | Google Stitch design tokens, color palette, typography & responsive specifications. |
 | [📡 **API_DOCS.md**](API_DOCS.md) | Comprehensive REST, Edge Function, and WebSocket endpoint specifications. |
 | [🤝 **CONTRIBUTING.md**](CONTRIBUTING.md) | Engineering standards, branch naming conventions, and review workflow. |
 

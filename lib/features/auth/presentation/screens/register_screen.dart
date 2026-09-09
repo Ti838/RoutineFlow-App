@@ -43,10 +43,12 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       return;
     }
 
-    await ref.read(authNotifierProvider.notifier).register(name, email, password);
+    await ref
+        .read(authNotifierProvider.notifier)
+        .register(name, email, password);
     final state = ref.read(authNotifierProvider);
     if (state is Authenticated && mounted) {
-      context.go('/app/my-day');
+      context.go('/my-day');
     }
   }
 
@@ -76,7 +78,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   const SizedBox(height: AppSpacing.xs),
                   Text(
                     'Start unifying your personal and study routines',
-                    style: AppTypography.body.copyWith(color: AppColors.textSecondaryLight),
+                    style: AppTypography.body
+                        .copyWith(color: AppColors.textSecondaryLight),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: AppSpacing.xxxl),
@@ -102,8 +105,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     prefixIcon: Icons.lock_outline,
                     obscureText: _obscurePassword,
                     suffixIcon: IconButton(
-                      icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility),
-                      onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                      icon: Icon(_obscurePassword
+                          ? Icons.visibility_off
+                          : Icons.visibility),
+                      onPressed: () =>
+                          setState(() => _obscurePassword = !_obscurePassword),
                     ),
                   ),
                   const SizedBox(height: AppSpacing.xxl),
@@ -117,7 +123,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Already have an account? ', style: AppTypography.caption),
+                      Text('Already have an account? ',
+                          style: AppTypography.caption),
                       GestureDetector(
                         onTap: () => context.go('/login'),
                         child: Text(

@@ -5,7 +5,9 @@ import '../../../../app/theme/app_colors.dart';
 import '../../../../app/theme/app_radius.dart';
 import '../../../../app/theme/app_spacing.dart';
 import '../../../../app/theme/app_typography.dart';
+import '../../../../core/responsive/breakpoints.dart';
 import '../../../../shared/models/priority.dart';
+import '../../../../shared/widgets/empty_state_view.dart';
 
 enum TaskStatus { todo, inProgress, completed, cancelled }
 
@@ -60,7 +62,7 @@ class TasksNotifier extends StateNotifier<List<TaskItem>> {
       : super([
           TaskItem(
             id: 'task_1',
-            title: 'Complete DSA assignment',
+            title: 'Complete Data Structures Assignment (Graph Algorithms)',
             dueDate: DateTime.now(),
             priority: Priority.urgent,
             status: TaskStatus.todo,
@@ -68,7 +70,7 @@ class TasksNotifier extends StateNotifier<List<TaskItem>> {
           ),
           TaskItem(
             id: 'task_2',
-            title: 'Read database chapter 5',
+            title: 'Read Database Systems Chapter 5 (Transactions & Indexing)',
             dueDate: DateTime.now(),
             priority: Priority.high,
             status: TaskStatus.todo,
@@ -76,7 +78,7 @@ class TasksNotifier extends StateNotifier<List<TaskItem>> {
           ),
           TaskItem(
             id: 'task_3',
-            title: 'Build portfolio website',
+            title: 'Refactor Routine Flow UI Architecture & Responsive Shell',
             dueDate: DateTime.now().add(const Duration(days: 1)),
             priority: Priority.medium,
             status: TaskStatus.todo,
@@ -84,7 +86,7 @@ class TasksNotifier extends StateNotifier<List<TaskItem>> {
           ),
           TaskItem(
             id: 'task_4',
-            title: 'Buy course materials',
+            title: 'Purchase Academic Notebooks and Stationery',
             dueDate: DateTime.now().add(const Duration(days: 1)),
             priority: Priority.low,
             status: TaskStatus.todo,
@@ -92,7 +94,7 @@ class TasksNotifier extends StateNotifier<List<TaskItem>> {
           ),
           TaskItem(
             id: 'task_5',
-            title: 'Workout session',
+            title: 'Cardio Workout & Core Training',
             dueDate: DateTime.now().add(const Duration(days: 2)),
             priority: Priority.medium,
             status: TaskStatus.completed,
@@ -142,6 +144,7 @@ class TasksScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final allTasks = ref.watch(tasksProvider);
     final filter = ref.watch(taskFilterProvider);
+    final isWide = ResponsiveBreakpoints.isMedium(context) || ResponsiveBreakpoints.isExpanded(context);
 
     final filteredTasks = allTasks.where((task) {
       switch (filter) {
@@ -158,7 +161,7 @@ class TasksScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tasks', style: AppTypography.heading3.copyWith(fontWeight: FontWeight.bold)),
+        title: Text('Tasks & Priorities', style: AppTypography.heading3.copyWith(fontWeight: FontWeight.bold)),
       ),
       body: Column(
         children: [
@@ -182,51 +185,36 @@ class TasksScreen extends ConsumerWidget {
           ),
           const Divider(height: 1),
 
-          // Tasks List
+          // Tasks List / Empty State
           Expanded(
             child: filteredTasks.isEmpty
-                ? Center(
-                    child: Text('No tasks found in this section', style: AppTypography.body.copyWith(color: AppColors.textSecondaryLight)),
+                ? EmptyStateView(
+                    icon: Icons.check_circle_outline,
+                    title: 'No Tasks Found',
+                    description: filter == TaskFilter.completed
+                        ? 'No completed tasks yet. Finish your pending tasks to see them here!'
+                        : 'Your task list is clean and clear for this filter.',
+                    actionText: 'Add New Task',
+                    onAction: () => _showAddTaskDialog(context, ref),
                   )
-                : ListView.separated(
-                    padding: const EdgeInsets.all(AppSpacing.lg),
-                    itemCount: filteredTasks.length,
-                    separatorBuilder: (context, index) => const SizedBox(height: 10),
-                    itemBuilder: (context, index) {
-                      final task = filteredTasks[index];
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).cardColor,
-                          borderRadius: AppRadius.radiusLg,
-                          border: Border.all(color: Theme.of(context).dividerColor),
+                : isWide
+                    ? GridView.builder(
+                        padding: EdgeInsets.all(isWide ? AppSpacing.xxl : AppSpacing.lg),
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 12,
+                          mainAxisExtent: 80,
                         ),
-                        child: ListTile(
-                          leading: Checkbox(
-                            value: task.isCompleted,
-                            activeColor: AppColors.primary,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-                            onChanged: (_) => ref.read(tasksProvider.notifier).toggleTask(task.id),
-                          ),
-                          title: Text(
-                            task.title,
-                            style: AppTypography.bodyMedium.copyWith(
-                              fontWeight: FontWeight.w600,
-                              decoration: task.isCompleted ? TextDecoration.lineThrough : null,
-                              color: task.isCompleted ? AppColors.textMutedLight : null,
-                            ),
-                          ),
-                          subtitle: Text(
-                            task.category != null ? '${task.category!} • Today' : 'Today',
-                            style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight),
-                          ),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.delete_outline, size: 20, color: AppColors.textMutedLight),
-                            onPressed: () => ref.read(tasksProvider.notifier).deleteTask(task.id),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+                        itemCount: filteredTasks.length,
+                        itemBuilder: (context, index) => _buildTaskTile(context, ref, filteredTasks[index]),
+                      )
+                    : ListView.separated(
+                        padding: const EdgeInsets.all(AppSpacing.lg),
+                        itemCount: filteredTasks.length,
+                        separatorBuilder: (context, index) => const SizedBox(height: 10),
+                        itemBuilder: (context, index) => _buildTaskTile(context, ref, filteredTasks[index]),
+                      ),
           ),
         ],
       ),
@@ -235,6 +223,59 @@ class TasksScreen extends ConsumerWidget {
         backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
         child: const Icon(Icons.add),
+      ),
+    );
+  }
+
+  Widget _buildTaskTile(BuildContext context, WidgetRef ref, TaskItem task) {
+    Color priorityColor = AppColors.primary;
+    if (task.priority == Priority.urgent) {
+      priorityColor = AppColors.error;
+    } else if (task.priority == Priority.high) {
+      priorityColor = AppColors.warning;
+    }
+
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: AppRadius.radiusLg,
+        border: Border.all(color: Theme.of(context).dividerColor),
+      ),
+      child: ListTile(
+        leading: Checkbox(
+          value: task.isCompleted,
+          activeColor: AppColors.primary,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+          onChanged: (_) => ref.read(tasksProvider.notifier).toggleTask(task.id),
+        ),
+        title: Text(
+          task.title,
+          style: AppTypography.bodyMedium.copyWith(
+            fontWeight: FontWeight.w600,
+            decoration: task.isCompleted ? TextDecoration.lineThrough : null,
+            color: task.isCompleted ? AppColors.textMutedLight : null,
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        subtitle: Row(
+          children: [
+            Container(
+              width: 8,
+              height: 8,
+              decoration: BoxDecoration(color: priorityColor, shape: BoxShape.circle),
+            ),
+            const SizedBox(width: 6),
+            Text(
+              task.category != null ? '${task.category!} • Today' : 'Today',
+              style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight),
+            ),
+          ],
+        ),
+        trailing: IconButton(
+          icon: const Icon(Icons.delete_outline, size: 20, color: AppColors.textMutedLight),
+          onPressed: () => ref.read(tasksProvider.notifier).deleteTask(task.id),
+        ),
       ),
     );
   }
@@ -251,28 +292,69 @@ class TasksScreen extends ConsumerWidget {
 
   void _showAddTaskDialog(BuildContext context, WidgetRef ref) {
     final controller = TextEditingController();
+    Priority selectedPriority = Priority.medium;
+    String selectedCategory = 'University';
+
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Add New Task'),
-        content: TextField(
-          controller: controller,
-          autofocus: true,
-          decoration: const InputDecoration(hintText: 'Task title...'),
-        ),
-        actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary, foregroundColor: Colors.white),
-            onPressed: () {
-              if (controller.text.trim().isNotEmpty) {
-                ref.read(tasksProvider.notifier).addTask(controller.text.trim(), Priority.medium, 'Personal');
-                Navigator.pop(context);
-              }
-            },
-            child: const Text('Add'),
+      builder: (context) => StatefulBuilder(
+        builder: (context, setDialogState) => AlertDialog(
+          title: const Text('Add New Task'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: controller,
+                autofocus: true,
+                decoration: const InputDecoration(
+                  labelText: 'Task Title',
+                  hintText: 'e.g. Prepare presentation slides...',
+                ),
+              ),
+              const SizedBox(height: 16),
+              DropdownButtonFormField<String>(
+                initialValue: selectedCategory,
+                decoration: const InputDecoration(labelText: 'Category'),
+                items: const [
+                  DropdownMenuItem(value: 'University', child: Text('University')),
+                  DropdownMenuItem(value: 'Study', child: Text('Study')),
+                  DropdownMenuItem(value: 'Personal', child: Text('Personal')),
+                  DropdownMenuItem(value: 'Health', child: Text('Health')),
+                ],
+                onChanged: (val) {
+                  if (val != null) setDialogState(() => selectedCategory = val);
+                },
+              ),
+              const SizedBox(height: 12),
+              DropdownButtonFormField<Priority>(
+                initialValue: selectedPriority,
+                decoration: const InputDecoration(labelText: 'Priority Level'),
+                items: const [
+                  DropdownMenuItem(value: Priority.urgent, child: Text('🔴 Urgent')),
+                  DropdownMenuItem(value: Priority.high, child: Text('🟠 High')),
+                  DropdownMenuItem(value: Priority.medium, child: Text('🟡 Medium')),
+                  DropdownMenuItem(value: Priority.low, child: Text('🟢 Low')),
+                ],
+                onChanged: (val) {
+                  if (val != null) setDialogState(() => selectedPriority = val);
+                },
+              ),
+            ],
           ),
-        ],
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary, foregroundColor: Colors.white),
+              onPressed: () {
+                if (controller.text.trim().isNotEmpty) {
+                  ref.read(tasksProvider.notifier).addTask(controller.text.trim(), selectedPriority, selectedCategory);
+                  Navigator.pop(context);
+                }
+              },
+              child: const Text('Add Task'),
+            ),
+          ],
+        ),
       ),
     );
   }

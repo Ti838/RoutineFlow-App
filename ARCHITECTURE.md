@@ -9,26 +9,26 @@
 Routine Flow is built following **Clean Architecture**, **Domain-Driven Design (DDD)**, and the **Offline-First Reactive Paradigm**. The architecture enforces complete separation of concerns, high testability, and zero business-logic coupling to UI frameworks or backend providers.
 
 ```mermaid
-graph TB
-    subgraph Presentation Layer [1. Presentation Layer (UI & State)]
+flowchart TB
+    subgraph PresentationLayer["1. Presentation Layer (UI & State)"]
         Widgets["Flutter Widgets & Responsive Layouts"]
         Providers["Riverpod State Notifiers & Stream Providers"]
     end
 
-    subgraph Domain Layer [2. Domain Layer (Pure Dart Business Logic)]
+    subgraph DomainLayer["2. Domain Layer (Pure Dart Business Logic)"]
         Entities["Domain Entities & Value Objects"]
         UseCases["Business Use Cases & Algorithmic Engines"]
         RepoInterfaces["Repository Abstractions (Interfaces)"]
     end
 
-    subgraph Data Layer [3. Data Layer (Data Access & Persistence)]
+    subgraph DataLayer["3. Data Layer (Data Access & Persistence)"]
         RepoImpls["Repository Implementations"]
         LocalDS["Local DataSource (Drift SQLite DB)"]
         RemoteDS["Remote DataSource (Supabase / REST / GraphQL)"]
         SyncQueue["Offline Mutation Sync Queue"]
     end
 
-    subgraph External Infrastructure [4. External Infrastructure & Services]
+    subgraph ExternalInfrastructure["4. External Infrastructure & Services"]
         PostgreSQL["PostgreSQL Cloud Database (Supabase)"]
         EdgeAI["Gemini 1.5 Flash AI Engine"]
         PaymentEngine["bKash / Nagad / SSLCommerz / Stripe Gateways"]

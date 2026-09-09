@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../app/theme/app_colors.dart';
 import '../../app/theme/app_radius.dart';
 import '../../app/theme/app_typography.dart';
+import '../../features/auth/domain/models/auth_state.dart';
+import '../../features/auth/presentation/providers/auth_provider.dart';
 import '../../shared/widgets/app_logo.dart';
 import 'breakpoints.dart';
 
-class ResponsiveScaffold extends StatelessWidget {
+class ResponsiveScaffold extends ConsumerWidget {
   final Widget child;
   final int currentIndex;
   final VoidCallback? onFabPressed;
@@ -39,9 +42,16 @@ class ResponsiveScaffold extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final isDesktop = ResponsiveBreakpoints.isExpanded(context);
     final isTablet = ResponsiveBreakpoints.isMedium(context);
+    final authState = ref.watch(authNotifierProvider);
+    final userName =
+        authState is Authenticated ? authState.user.name : 'Student';
+    final userDept = authState is Authenticated
+        ? '${authState.user.department} • ${authState.user.universityName}'
+        : 'CSE • DUET';
+    final userInitial = userName.isNotEmpty ? userName[0].toUpperCase() : 'S';
 
     if (isDesktop) {
       return Scaffold(
@@ -77,8 +87,10 @@ class ResponsiveScaffold extends StatelessWidget {
                   ),
                   const SizedBox(height: 32),
                   _navItem(context, 0, Icons.wb_sunny_rounded, 'My Day'),
-                  _navItem(context, 1, Icons.calendar_month_rounded, 'Calendar'),
-                  _navItem(context, 2, Icons.check_circle_outline_rounded, 'Tasks'),
+                  _navItem(
+                      context, 1, Icons.calendar_month_rounded, 'Calendar'),
+                  _navItem(
+                      context, 2, Icons.check_circle_outline_rounded, 'Tasks'),
                   _navItem(context, 3, Icons.school_rounded, 'University'),
                   _navItem(context, 4, Icons.person_rounded, 'Profile'),
                   const Spacer(),
@@ -88,10 +100,13 @@ class ResponsiveScaffold extends StatelessWidget {
                     padding: const EdgeInsets.all(16.0),
                     child: Row(
                       children: [
-                        const CircleAvatar(
+                        CircleAvatar(
                           radius: 18,
                           backgroundColor: AppColors.primary,
-                          child: Text('A', style: TextStyle(color: Colors.white)),
+                          child: Text(userInitial,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
                         ),
                         const SizedBox(width: 12),
                         Expanded(
@@ -100,17 +115,22 @@ class ResponsiveScaffold extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                'Alex',
+                                userName,
                                 style: AppTypography.caption.copyWith(
                                   color: AppColors.textPrimaryDark,
                                   fontWeight: FontWeight.bold,
                                 ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                               Text(
-                                'CSE • DUET',
+                                userDept,
                                 style: AppTypography.caption.copyWith(
                                   color: AppColors.textSecondaryDark,
+                                  fontSize: 10,
                                 ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ],
                           ),
@@ -140,7 +160,8 @@ class ResponsiveScaffold extends StatelessWidget {
               labelType: NavigationRailLabelType.all,
               backgroundColor: AppColors.surfaceDark,
               selectedIconTheme: const IconThemeData(color: AppColors.primary),
-              unselectedIconTheme: const IconThemeData(color: AppColors.textSecondaryDark),
+              unselectedIconTheme:
+                  const IconThemeData(color: AppColors.textSecondaryDark),
               selectedLabelTextStyle: AppTypography.caption.copyWith(
                 color: AppColors.primary,
                 fontWeight: FontWeight.bold,
@@ -180,7 +201,8 @@ class ResponsiveScaffold extends StatelessWidget {
                 ),
               ],
             ),
-            const VerticalDivider(thickness: 1, width: 1, color: AppColors.borderDark),
+            const VerticalDivider(
+                thickness: 1, width: 1, color: AppColors.borderDark),
             Expanded(child: child),
           ],
         ),
@@ -197,27 +219,35 @@ class ResponsiveScaffold extends StatelessWidget {
         indicatorColor: AppColors.primary.withAlpha(50),
         destinations: const [
           NavigationDestination(
-            icon: Icon(Icons.wb_sunny_outlined, color: AppColors.textSecondaryDark),
-            selectedIcon: Icon(Icons.wb_sunny_rounded, color: AppColors.primary),
+            icon: Icon(Icons.wb_sunny_outlined,
+                color: AppColors.textSecondaryDark),
+            selectedIcon:
+                Icon(Icons.wb_sunny_rounded, color: AppColors.primary),
             label: 'My Day',
           ),
           NavigationDestination(
-            icon: Icon(Icons.calendar_month_outlined, color: AppColors.textSecondaryDark),
-            selectedIcon: Icon(Icons.calendar_month_rounded, color: AppColors.primary),
+            icon: Icon(Icons.calendar_month_outlined,
+                color: AppColors.textSecondaryDark),
+            selectedIcon:
+                Icon(Icons.calendar_month_rounded, color: AppColors.primary),
             label: 'Calendar',
           ),
           NavigationDestination(
-            icon: Icon(Icons.check_circle_outline, color: AppColors.textSecondaryDark),
-            selectedIcon: Icon(Icons.check_circle_rounded, color: AppColors.primary),
+            icon: Icon(Icons.check_circle_outline,
+                color: AppColors.textSecondaryDark),
+            selectedIcon:
+                Icon(Icons.check_circle_rounded, color: AppColors.primary),
             label: 'Tasks',
           ),
           NavigationDestination(
-            icon: Icon(Icons.school_outlined, color: AppColors.textSecondaryDark),
+            icon:
+                Icon(Icons.school_outlined, color: AppColors.textSecondaryDark),
             selectedIcon: Icon(Icons.school_rounded, color: AppColors.primary),
             label: 'University',
           ),
           NavigationDestination(
-            icon: Icon(Icons.person_outline, color: AppColors.textSecondaryDark),
+            icon:
+                Icon(Icons.person_outline, color: AppColors.textSecondaryDark),
             selectedIcon: Icon(Icons.person_rounded, color: AppColors.primary),
             label: 'Profile',
           ),
@@ -226,7 +256,8 @@ class ResponsiveScaffold extends StatelessWidget {
     );
   }
 
-  Widget _navItem(BuildContext context, int index, IconData icon, String label) {
+  Widget _navItem(
+      BuildContext context, int index, IconData icon, String label) {
     final isSelected = currentIndex == index;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
@@ -234,15 +265,19 @@ class ResponsiveScaffold extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadius.md),
         ),
-        tileColor: isSelected ? AppColors.primary.withAlpha(40) : Colors.transparent,
+        tileColor:
+            isSelected ? AppColors.primary.withAlpha(40) : Colors.transparent,
         leading: Icon(
           icon,
-          color: isSelected ? AppColors.primaryLight : AppColors.textSecondaryDark,
+          color:
+              isSelected ? AppColors.primaryLight : AppColors.textSecondaryDark,
         ),
         title: Text(
           label,
           style: AppTypography.bodyMedium.copyWith(
-            color: isSelected ? AppColors.primaryLight : AppColors.textSecondaryDark,
+            color: isSelected
+                ? AppColors.primaryLight
+                : AppColors.textSecondaryDark,
             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
           ),
         ),
@@ -258,7 +293,8 @@ class ResponsiveScaffold extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadius.md),
         ),
-        leading: const Icon(Icons.admin_panel_settings_outlined, color: AppColors.university),
+        leading: const Icon(Icons.admin_panel_settings_outlined,
+            color: AppColors.university),
         title: Text(
           'Campus Admin',
           style: AppTypography.caption.copyWith(
