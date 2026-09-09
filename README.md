@@ -17,35 +17,37 @@
   <img src="https://img.shields.io/badge/Dart-3.0+-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart" />
   <img src="https://img.shields.io/badge/Architecture-Clean%20%2B%20Offline--First-22C55E?style=for-the-badge" alt="Clean Architecture" />
   <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Web%20%7C%20Desktop-2563EB?style=for-the-badge" alt="Platforms" />
+  <img src="https://img.shields.io/badge/Database-Drift%20SQLite%20%2B%20PostgreSQL-3ECF8E?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
   <img src="https://img.shields.io/badge/AI%20Ready-Gemini%20%7C%20OpenAI-8E75B2?style=for-the-badge&logo=google&logoColor=white" alt="AI Ready" />
 </p>
 
 ---
 
-## 📑 Table of Contents
-1. [Executive Overview & Philosophy](#-executive-overview--philosophy)
-2. [Why Routine Flow? (The Problem & Solution)](#-why-routine-flow-the-problem--solution)
-3. [Core Feature Ecosystem](#-core-feature-ecosystem)
-4. [High-Level System Architecture](#-high-level-system-architecture)
-5. [Modular Blueprint & Technical Implementation](#-modular-blueprint--technical-implementation)
-   - [A. Unified Calendar & Smart Conflict Detection](#a-unified-calendar--smart-conflict-detection)
-   - [B. AI Intelligence & Automated Assistant Engine](#b-ai-intelligence--automated-assistant-engine)
-   - [C. Realtime Chat & Class Collaboration System](#c-realtime-chat--class-collaboration-system)
-   - [D. Payment Gateway & Monetization Architecture](#d-payment-gateway--monetization-architecture)
-   - [E. Offline-First Database & Cloud Sync Engine](#e-offline-first-database--cloud-sync-engine)
-6. [Database Schema & Multi-Tenant Design](#-database-schema--multi-tenant-design)
-7. [Repository File & Codebase Structure](#-repository-file--codebase-structure)
-8. [Getting Started & Installation](#-getting-started--installation)
-9. [Documentation Suite](#-documentation-suite)
-10. [Future Roadmap](#-future-roadmap)
+## 📑 Executive Table of Contents
+1. [Vision & Brand Philosophy](#-vision--brand-philosophy)
+2. [Problem Statement & The Unified Solution](#-problem-statement--the-unified-solution)
+3. [System Architecture & Clean Design](#-system-architecture--clean-design)
+4. [Ecosystem & Core Subsystems](#-ecosystem--core-subsystems)
+   - [A. Unified 'My Day' Temporal Engine](#a-unified-my-day-temporal-engine)
+   - [B. University Routine Hub & Schedule Sync](#b-university-routine-hub--schedule-sync)
+   - [C. AI Intelligence & Automated Timetable Parser](#c-ai-intelligence--automated-timetable-parser)
+   - [D. Real-Time Collaboration & Class Chatrooms](#d-real-time-collaboration--class-chatrooms)
+   - [E. Payment Gateway & Monetization Strategy](#e-payment-gateway--monetization-strategy)
+   - [F. Offline-First Drift SQLite & Cloud Sync](#f-offline-first-drift-sqlite--cloud-sync)
+5. [Database Schema & Multi-Tenant Design](#-database-schema--multi-tenant-design)
+6. [Codebase & Directory Index](#-codebase--directory-index)
+7. [Getting Started & Installation](#-getting-started--installation)
+8. [Comprehensive Documentation Directory](#-comprehensive-documentation-directory)
+9. [Release & Production Build Manual](#-release--production-build-manual)
+10. [Licensing & Roadmap](#-licensing--roadmap)
 
 ---
 
-## 🌟 Executive Overview & Philosophy
+## 🌟 Vision & Brand Philosophy
 
-Modern university students lead fragmented lives. Their academic timetable is managed via university portals, PDF routine sheets, or messaging groups, while their personal tasks, habits, gym routines, and exam preparation live in separate to-do apps, calendars, or notebook entries.
+University students operate in an increasingly fragmented digital ecosystem. Academic routines and lecture room allocations are shared via PDFs or student portals, personal habits are logged in separate habit trackers, to-dos sit in unprioritized note apps, and class notices get lost in crowded chat threads.
 
-**Routine Flow** eliminates this cognitive overload by uniting academic schedules, university announcements, personal habits, time-blocked daily goals, and exam countdowns into a single, cohesive, offline-capable application.
+**ROUTINE FLOW** synthesizes all academic obligations and personal life commitments into a single, cohesive, chronological timeline. It acts as an intelligent daily cockpit that empowers students to maintain high academic performance while preserving personal health, fitness, and career goals.
 
 ```mermaid
 graph TD
@@ -82,143 +84,104 @@ graph TD
 
 ---
 
-## 🎯 Why Routine Flow? (The Problem & Solution)
+## 🎯 Problem Statement & The Unified Solution
 
-| Student Challenge | Traditional Workaround | Routine Flow Unified Solution |
+| User Challenge | Fragmented Workaround | Routine Flow Unified Solution |
 | :--- | :--- | :--- |
-| **Scattered Routines** | Checking WhatsApp for class updates + Google Calendar for personal tasks | **Unified Daily Timeline**: Class periods & personal blocks merge seamlessly into "My Day". |
-| **Schedule Clashes** | Overbooking personal appointments during rescheduled classes | **Zero-Clash Algorithm**: Instant conflict detection with automated alternatives. |
-| **Manual Routine Entry** | Typing 40+ class slots every semester | **AI Routine Ingestion**: Parse PDF/Image timetable into structured database in seconds. |
-| **No Internet in Classrooms** | Inaccessible cloud-only apps | **Offline-First Drift SQLite**: Full functionality offline with zero latency and automatic sync. |
-| **Class Communication** | Lost notice board announcements | **Realtime Class Channels**: Dedicated course & batch chat rooms with pinned deadlines. |
+| **Scattered Timetables** | Checking WhatsApp for class updates + Google Calendar for personal tasks | **Unified Daily Timeline**: Class periods & personal blocks merge into one active schedule. |
+| **Schedule Clashes** | Booking personal appointments during surprise makeup classes | **Zero-Clash Algorithm**: Instant conflict detection with automated alternatives. |
+| **Manual Routine Entry** | Manually typing 40+ lecture slots each semester | **AI Routine Ingestion**: Parse PDF/Image timetable into structured database in seconds. |
+| **No Internet in Classrooms** | Inaccessible cloud-only apps | **Offline-First Drift SQLite**: Zero frame drops, instant loading, auto-sync when online. |
+| **Class Notices Lost in Noise** | Important exam dates lost in general chats | **Realtime Class Channels**: Dedicated course & batch chat rooms with pinned deadlines. |
 
 ---
 
-## 🚀 Core Feature Ecosystem
+## 🏗️ System Architecture & Clean Design
 
-```mermaid
-graph TD
-    A["📱 Routine Flow Core"] --> B["📅 Unified Schedule Engine"]
-    A --> C["🎓 University Integration Hub"]
-    A --> D["⚡ Task & Habit Tracker"]
-    A --> E["🤖 AI Smart Planner"]
-    A --> F["💬 Real-Time Collaboration"]
-    A --> G["💳 Flexible Payment Engine"]
-
-    B --> B1["'My Day' Live Timeline"]
-    B --> B2["Visual Free-Time Calculator"]
-    B --> B3["Conflict Resolution Dialog"]
-
-    C --> C1["Multi-University & Department Roster"]
-    C --> C2["Class Routines & Room Allocations"]
-    C --> C3["Exam Schedules & Assignment Counters"]
-
-    D --> D1["Habit Streaks & Completion Logs"]
-    D --> D2["Time-Blocked Priority Tasks"]
-    D --> D3["Interactive Checklists"]
-
-    E --> E1["Natural Language Schedule Generation"]
-    E --> E2["Syllabus to Study-Plan Decomposition"]
-    E --> E3["Daily Productivity Audit"]
-
-    F --> F1["Batch & Section Chatrooms"]
-    F --> F2["Course-Wise Q&A Channels"]
-    F --> F3["Peer-to-Peer Direct Messaging"]
-
-    G --> G1["Mobile Financial Services (bKash, Nagad)"]
-    G --> G2["International Cards (Stripe, SSLCommerz)"]
-    G --> G3["In-App Purchases (Google Play, Apple Store)"]
-```
-
----
-
-## 🏗️ High-Level System Architecture
-
-Routine Flow is built following **Clean Architecture principles** and the **Offline-First Reactive Paradigm**:
+Routine Flow strictly implements **Clean Architecture** and the **Offline-First Reactive Paradigm**:
 
 ```mermaid
 graph TB
-    subgraph Client Layer [Flutter Client Application]
-        UI["Presentation Layer (Flutter BLoC / Widgets)"]
-        Domain["Domain Layer (Entities, Use Cases, Repository Interfaces)"]
-        Data["Data Layer (Repository Impls, Local & Remote DataSources)"]
+    subgraph Presentation Layer [Presentation Layer (Flutter / Riverpod)]
+        UI["Screens & Widgets (MyDay, University, Habits, Tasks, Profile)"]
+        State["State Notifiers & Providers (Riverpod)"]
     end
 
-    subgraph Local Storage [Local Offline-First Storage]
-        DriftDB["Drift / SQLite Local DB (Encrypted)"]
+    subgraph Domain Layer [Domain Layer (Core Business Logic)]
+        Entities["Domain Models (Activity, CourseOffering, Habit, Task)"]
+        Repos["Repository Interfaces"]
+        ConflictEngine["Conflict Detection & Free-Time Engine"]
+    end
+
+    subgraph Data Layer [Data Layer (Local & Remote Sources)]
+        RepoImpl["Repository Implementations"]
+        DriftDB["Drift / SQLite Local DB (Offline Cache)"]
         SyncQ["Offline Mutation Queue"]
     end
 
-    subgraph Cloud Infrastructure [Scalable Backend & Cloud Services]
-        Gateway["API Gateway / Supabase REST & Realtime / Firebase"]
-        AuthService["Auth Service (OAuth, Email, OTP)"]
-        RDBMS["PostgreSQL (Multi-Tenant + Row Level Security)"]
-        AIService["AI Service (Gemini 1.5 Flash / OpenAI / Claude)"]
-        PaymentGW["Payment Integrations (bKash, Nagad, SSLCommerz, Stripe)"]
-        WebSocket["Realtime WebSocket / Push Engine (FCM / WebSockets)"]
+    subgraph Cloud Backend [Cloud Backend & Microservices]
+        Supabase["Supabase REST / Realtime / PostgreSQL RLS"]
+        AIService["AI Engine (Gemini 1.5 Flash / OpenAI Vision)"]
+        PaymentAPI["Payment Gateways (bKash, Nagad, Stripe, SSLCommerz)"]
+        PushService["Push Notification Service (FCM)"]
     end
 
-    UI --> Domain
-    Domain --> Data
-    Data --> DriftDB
-    Data --> SyncQ
-    SyncQ -->|Auto-Sync on Network Reconnect| Gateway
-    Gateway --> AuthService
-    Gateway --> RDBMS
-    Gateway --> AIService
-    Gateway --> PaymentGW
-    Gateway --> WebSocket
+    UI --> State
+    State --> Repos
+    Repos --> Entities
+    ConflictEngine --> Entities
+    State --> ConflictEngine
+    RepoImpl -.-> Repos
+    RepoImpl --> DriftDB
+    RepoImpl --> SyncQ
+    SyncQ -->|Auto-Replay on Connect| Supabase
+    RepoImpl --> Supabase
+    RepoImpl --> AIService
+    RepoImpl --> PaymentAPI
+    RepoImpl --> PushService
 ```
 
 ---
 
-## 📐 Modular Blueprint & Technical Implementation
+## 🚀 Ecosystem & Core Subsystems
 
-This section details how every subsystem is engineered, how current mock/prototype services operate, and how production APIs are seamlessly plugged in.
+### A. Unified 'My Day' Temporal Engine
+- **Active Focus Card**: Live countdown, location, course instructor, and quick complete actions.
+- **Next Up Banner**: Real-time buffer counter showing exact time remaining before the next commitment.
+- **Visual Free-Time Discovery**: Automatically computes non-overlapping idle intervals $(>45\text{ mins})$ between $06:00$ and $23:00$ and suggests optimal study/habit sessions.
+- **Smart Conflict Alerts**: Detects temporal overlaps using interval logic:
+  $$\text{Conflict}(A, B) = (S_A < E_B) \land (S_B < E_A)$$
 
-### A. Unified Calendar & Smart Conflict Detection
-- **Time Complexity**: $\mathcal{O}(N \log N)$ interval overlap verification.
-- **Algorithm**: Validates that no two activities $[S_1, E_1]$ and $[S_2, E_2]$ satisfy $S_1 < E_2 \land S_2 < E_1$.
-- **Free Slot Search**: Computes $[E_i, S_{i+1}]$ throughout the operating day $(06:00 - 23:00)$ and identifies ideal gaps for study sessions and habits.
+### B. University Routine Hub & Schedule Sync
+- **Multi-Tenant Hierarchy**: Supports multi-university, department, semester, and batch filtering.
+- **Class Schedules**: Displays room numbers, faculty contact details, building codes, and course credits.
+- **Exams & Deadlines**: Midterm, Final, and Assignment trackers with countdown badges.
 
-### B. AI Intelligence & Automated Assistant Engine
-- **Implementation Blueprint**:
-  - **OCR Timetable Ingestion**: Uses Gemini Vision / OCR API to convert image schedules into structured JSON schema (`UniversityRoutineSlot`).
-  - **Dynamic Schedule Generator**: Accepts natural language prompts (e.g., *"I have an exam on Friday, allocate 2 hours of daily study for Physics"*), checks free-time gaps, and creates scheduled time-blocks automatically.
-  - **Edge Function Support**: Deno Edge Function in `supabase/functions/ai-planner` interfacing with Google Generative AI API (`gemini-1.5-flash`).
+### C. AI Intelligence & Automated Timetable Parser
+- **OCR Timetable Ingestion**: Ingests timetable photos or PDFs using Gemini 1.5 Flash / Vision OCR and returns structured `List<UniversityRoutineSlot>`.
+- **Exam Study Blueprint**: Decomposes exam syllabi into daily 45-minute Pomodoro study sessions placed inside identified free-time gaps.
+- **Conversational Assistant**: Natural language schedule rescheduling and productivity queries.
 
-### C. Realtime Chat & Class Collaboration System
-- **Channel Structure**:
-  - **University Batch Group**: Read-only announcements by Class Representatives (CR).
-  - **Course Channels**: Discussion for individual subjects (e.g., `CSE-301: Database Systems`).
-  - **Peer Direct Messaging**: 1-on-1 private messaging between classmates.
-- **Backend Architecture Options**:
-  1. **Supabase Realtime**: Broadcast & Postgres Changes with RLS-guaranteed isolation.
-  2. **Firebase Firestore / Cloud Messaging**: Real-time snapshot listeners + FCM background alerts.
-  3. **Custom WebSocket Server (Node.js/Go)**: High-throughput Socket.io microservice.
+### D. Real-Time Collaboration & Class Chatrooms
+- **Batch Announcement Channel**: Read-only official announcements by Class Representatives (CR).
+- **Course Q&A Channels**: Course-specific discussion threads for study questions and notes sharing.
+- **Peer 1-on-1 Messaging**: Direct communication between classmates for study groups.
 
-### D. Payment Gateway & Monetization Architecture
+### E. Payment Gateway & Monetization Strategy
+- **Local Payment Gateways**: bKash Tokenized Checkout, Nagad Direct Pay, SSLCommerz, Shurjopay.
+- **Global & Mobile In-App**: Stripe Checkout, Google Play Billing, Apple StoreKit.
 - **Tier Structure**:
-  - **Free Tier**: Full routine management, manual task & habit tracking, local offline storage.
-  - **Pro Tier ($1.99/mo or ৳150/mo)**: AI Automated Timetable Parser, Advanced Conflict Resolution, Cloud Multi-Device Sync, Unlimited Study Groups.
-  - **University Enterprise**: Custom institutional tenant with automatic student enrollment sync.
-- **Supported Payment Gateways**:
-  - **Bangladesh MFS**: bKash Tokenized Checkout API, Nagad Direct Pay.
-  - **Regional Aggregator**: SSLCommerz, Shurjopay.
-  - **Global & App Stores**: Stripe Checkout, Google Play Billing (`in_app_purchase`), Apple StoreKit.
+  - **Free Tier**: Complete local routine management, habits, tasks, offline storage.
+  - **Pro Tier (৳150 / \$1.99 mo)**: AI Timetable OCR, Smart Exam Planner, Cloud Sync, Study Groups.
+  - **Campus Enterprise**: Department-level routine management & bulk student licensing.
 
-### E. Offline-First Database & Cloud Sync Engine
-- **Local Engine**: Drift (SQLite) ensuring instant $(<16\text{ms})$ frame updates and complete offline usability.
-- **Synchronization Protocol**:
-  - Every create/update/delete operation writes locally and enqueues a mutation record in `sync_queue`.
-  - When network status transitions to `online`, `SyncEngine` replays pending mutations with idempotent upserts.
-  - Server timestamps (`updated_at`) resolve conflicts via Last-Write-Wins (LWW) or client-prompted resolution.
+### F. Offline-First Drift SQLite & Cloud Sync
+- **Sub-16ms Query Latency**: Immediate UI responsiveness regardless of cellular signal quality.
+- **Mutation Queue**: Offline edits are persisted to a transactional `sync_queue` table and automatically replayed with idempotent upserts upon reconnection.
 
 ---
 
 ## 🗄️ Database Schema & Multi-Tenant Design
-
-The database is built on PostgreSQL with Row-Level Security (RLS) guaranteeing strict data isolation:
 
 ```mermaid
 erDiagram
@@ -240,25 +203,25 @@ erDiagram
 
 ---
 
-## 📂 Repository File & Codebase Structure
+## 📂 Codebase & Directory Index
 
 ```
 ROUTINEFLOW-APP/
 ├── assets/
-│   ├── icons/                   # App icons & vector assets
+│   ├── icons/                   # Vector & PNG application icons
 │   └── images/
 │       ├── logo.png             # Official Routine Flow branding
-│       └── app_logo.png         # High-res vector render
+│       └── app_logo.png         # High-resolution vector render
 ├── lib/
 │   ├── app/
-│   │   ├── config/              # App environment configs & constants
+│   │   ├── config/              # Environment config & constants
 │   │   ├── router/              # Declarative GoRouter routing table
-│   │   └── theme/               # Modern dark/light typography & palette
+│   │   └── theme/               # Dark & light theme palettes & typography
 │   ├── core/
-│   │   ├── database/            # Drift SQLite offline database schema
+│   │   ├── database/            # Drift SQLite database schema & tables
 │   │   ├── errors/              # AppException & Failure hierarchy
-│   │   ├── network/             # Network connectivity listener
-│   │   ├── responsive/          # Adaptive layout (Mobile/Tablet/Desktop)
+│   │   ├── network/             # Connectivity stream listener
+│   │   ├── responsive/          # Mobile, Tablet, Desktop adaptive scaffold
 │   │   ├── services/            # Notification & local storage services
 │   │   └── sync/                # Offline mutation sync engine
 │   ├── features/
@@ -277,13 +240,15 @@ ROUTINEFLOW-APP/
 ├── supabase/
 │   ├── migrations/              # 001_schema, 002_rls, 003_seed
 │   └── functions/               # AI planner Deno edge function
-├── test/                        # Unit, widget & integration tests
-├── ARCHITECTURE.md              # Detailed software engineering design
-├── CODE_MAP.md                  # Comprehensive file-by-file index
+├── test/                        # Comprehensive unit & widget test suites
+├── ARCHITECTURE.md              # System design & Clean Architecture document
+├── CODE_MAP.md                  # Complete file-by-file codebase index
 ├── PRD.md                       # Product Requirements Document
-├── SRS.md                       # Software Requirements Specification
-├── SYSTEM_BLUEPRINT.md          # Implementation guide for AI, DB, Payments & Chat
-└── SETUP_GUIDE.md               # Local environment setup & build manual
+├── SRS.md                       # Software Requirements Specification (IEEE 830)
+├── SYSTEM_BLUEPRINT.md          # Technical integration manual (AI/DB/Payments/Chat)
+├── SETUP_GUIDE.md               # Local environment setup & deployment manual
+├── API_DOCS.md                  # REST, WebSocket & Database API specifications
+└── CONTRIBUTING.md               # Engineering & pull request guidelines
 ```
 
 ---
@@ -291,7 +256,7 @@ ROUTINEFLOW-APP/
 ## 🚀 Getting Started & Installation
 
 ### Prerequisites
-- **Flutter SDK**: `>= 3.27.0` ([Installation Guide](https://docs.flutter.dev/get-started/install))
+- **Flutter SDK**: `>= 3.27.0` ([Install Guide](https://docs.flutter.dev/get-started/install))
 - **Dart SDK**: `>= 3.6.0`
 - **Android Studio** / **VS Code** with Flutter extensions
 - **Connected Physical Device** or **Android/iOS Emulator**
@@ -302,41 +267,64 @@ ROUTINEFLOW-APP/
 git clone https://github.com/Ti838/RoutineFlow-App.git
 cd RoutineFlow-App
 
-# 2. Install dependencies
+# 2. Fetch dependencies
 flutter pub get
 
-# 3. Run all tests to ensure zero regressions
+# 3. Execute all unit tests
 flutter test
 
-# 4. Analyze code quality
+# 4. Perform static code analysis (0 errors, 0 warnings)
 dart analyze
 
-# 5. Run on your connected device
+# 5. Launch the application
 flutter run
 ```
 
 ---
 
-## 📚 Documentation Suite
+## 📚 Comprehensive Documentation Directory
 
-| Document | Purpose |
+| Document | Purpose & Scope |
 | :--- | :--- |
 | [📘 **PRD.md**](PRD.md) | Product strategy, user personas, UX philosophy, and business KPIs. |
 | [📐 **SRS.md**](SRS.md) | IEEE 830-compliant software requirements, formulas, and security specs. |
 | [🏛️ **ARCHITECTURE.md**](ARCHITECTURE.md) | Clean Architecture patterns, state management, and caching strategies. |
-| [🛠️ **SYSTEM_BLUEPRINT.md**](SYSTEM_BLUEPRINT.md) | Detailed technical integration guide for AI, Databases, Payments & Chat. |
+| [🛠️ **SYSTEM_BLUEPRINT.md**](SYSTEM_BLUEPRINT.md) | Deep technical integration guide for AI, Databases, Payments & Chat. |
 | [🗺️ **CODE_MAP.md**](CODE_MAP.md) | Comprehensive index of every source file, class, and method. |
 | [⚙️ **SETUP_GUIDE.md**](SETUP_GUIDE.md) | Step-by-step local machine and backend deployment manual. |
+| [📡 **API_DOCS.md**](API_DOCS.md) | Comprehensive REST, Edge Function, and WebSocket endpoint specifications. |
+| [🤝 **CONTRIBUTING.md**](CONTRIBUTING.md) | Engineering standards, branch naming conventions, and review workflow. |
 
 ---
 
-## 🗺️ Future Roadmap
+## 📦 Release & Production Build Manual
+
+To generate an optimized, lightweight production build for release:
+
+```bash
+# Optimized Android Release APK (Split by CPU architecture: ~12-16 MB)
+flutter build apk --release --split-per-abi
+
+# Android App Bundle for Google Play Store upload
+flutter build appbundle --release
+
+# iOS Release Archive (macOS required)
+flutter build ipa --release
+
+# Production Web Build
+flutter build web --release
+```
+
+---
+
+## 🗺️ Licensing & Roadmap
 
 - [x] **Phase 1: Foundation (Current MVP)**
-  - Unified My Day dashboard uniting university + personal blocks.
+  - Unified My Day dashboard uniting university + personal routines.
   - Offline-first SQLite database with conflict detection algorithms.
   - Official brand icon integration across all operating systems.
-- [ ] **Phase 2: Full Realtime Cloud & Chat Collaboration**
+  - 100% test pass rate and 0 lint warnings.
+- [ ] **Phase 2: Realtime Cloud & Peer Chat Collaboration**
   - Supabase/Firebase live synchronization.
   - Class batch & course-specific chatrooms for instant notice sharing.
 - [ ] **Phase 3: Deep AI Assistant & Timetable OCR**
