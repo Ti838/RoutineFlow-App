@@ -27,7 +27,7 @@ Every feature in Routine Flow is engineered to answer one fundamental question w
 
 | User Persona | Core Problem | How Routine Flow Solves It |
 | :--- | :--- | :--- |
-| **University Student (Timon)** | "My classes change rooms, I have assignments due, and I struggle to find uninterrupted time to study without conflicting with my fitness or personal routines." | Unifies LMS timetables with personal tasks, alerts on schedule conflicts in advance, and discovers free-time study windows. |
+| **University Student (Alex)** | "My classes change rooms, I have assignments due, and I struggle to find uninterrupted time to study without conflicting with my fitness or personal routines." | Unifies LMS timetables with personal tasks, alerts on schedule conflicts in advance, and discovers free-time study windows. |
 | **Working Student / Freelancer** | "I work part-time around my university lectures. When a class is rescheduled, my work shifts get disrupted." | Real-time clash detection alerts the user immediately and recommends optimal rescheduling slots. |
 | **Class Representative (CR)** | "Broadcasting room changes or exam dates through chaotic chat groups leads to missed deadlines." | Dedicated Batch Announcement & Chat Channels with pinned deadlines and automatic schedule updates. |
 | **Department Timetable Admin** | "Broadcasting room changes or class rescheduling through bulletin boards causes campus confusion." | Centralized Routine Management enabling 1-click timetable broadcasting with push notification alerts to all enrolled students. |

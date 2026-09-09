@@ -19,7 +19,7 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  final _emailController = TextEditingController(text: 'timon@routineflow.app');
+  final _emailController = TextEditingController(text: 'student@routineflow.app');
   final _passwordController = TextEditingController(text: 'password123');
   bool _obscurePassword = true;
 

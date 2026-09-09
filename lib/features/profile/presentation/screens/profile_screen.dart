@@ -54,7 +54,7 @@ class ProfileScreen extends ConsumerWidget {
                     children: [
                       Row(
                         children: [
-                          Text(user?.name ?? 'Timon Roy', style: AppTypography.heading3),
+                          Text(user?.name ?? 'Alex Morgan', style: AppTypography.heading3),
                           const SizedBox(width: 8),
                           if (user?.isPremium ?? true)
                             Container(
@@ -68,7 +68,7 @@ class ProfileScreen extends ConsumerWidget {
                         ],
                       ),
                       const SizedBox(height: 2),
-                      Text(user?.email ?? 'timon@routineflow.app', style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight)),
+                      Text(user?.email ?? 'student@routineflow.app', style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight)),
                     ],
                   ),
                 ),

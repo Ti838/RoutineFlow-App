@@ -29,7 +29,7 @@ class MyDayScreen extends ConsumerWidget {
     final currentFilter = ref.watch(myDayFilterProvider);
     final authState = ref.watch(authNotifierProvider);
 
-    final userName = authState is Authenticated ? authState.user.name : 'Timon';
+    final userName = authState is Authenticated ? authState.user.name : 'Alex';
     final isDesktop = ResponsiveBreakpoints.isExpanded(context);
     final isTablet = ResponsiveBreakpoints.isMedium(context);
 

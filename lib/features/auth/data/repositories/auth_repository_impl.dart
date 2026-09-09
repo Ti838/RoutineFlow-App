@@ -27,8 +27,8 @@ class AuthRepositoryImpl implements AuthRepository {
     }
     return UserModel(
       id: 'user_1',
-      name: 'Timon',
-      email: 'timon@routineflow.app',
+      name: 'Alex',
+      email: 'student@routineflow.app',
       universityName: 'Dhaka University of Engineering & Technology',
       department: 'Computer Science & Engineering',
       semester: '6th Semester',

@@ -83,7 +83,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   CustomTextField(
                     controller: _nameController,
                     label: 'Full Name',
-                    hint: 'e.g. Timon Roy',
+                    hint: 'e.g. Alex Morgan',
                     prefixIcon: Icons.person_outline,
                   ),
                   const SizedBox(height: AppSpacing.lg),

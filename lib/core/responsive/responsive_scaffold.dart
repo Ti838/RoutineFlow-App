@@ -91,7 +91,7 @@ class ResponsiveScaffold extends StatelessWidget {
                         const CircleAvatar(
                           radius: 18,
                           backgroundColor: AppColors.primary,
-                          child: Text('T', style: TextStyle(color: Colors.white)),
+                          child: Text('A', style: TextStyle(color: Colors.white)),
                         ),
                         const SizedBox(width: 12),
                         Expanded(
@@ -100,7 +100,7 @@ class ResponsiveScaffold extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                'Timon',
+                                'Alex',
                                 style: AppTypography.caption.copyWith(
                                   color: AppColors.textPrimaryDark,
                                   fontWeight: FontWeight.bold,

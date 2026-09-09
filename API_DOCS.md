@@ -19,7 +19,7 @@ This document outlines the REST, Edge Function, and WebSocket endpoint specifica
     "email": "student@university.edu",
     "password": "SecurePassword123!",
     "data": {
-      "full_name": "Timon Roy",
+      "full_name": "Alex Morgan",
       "university_id": "univ_ait_01",
       "department_id": "dept_cse_01",
       "student_id": "2024-CSE-042"
