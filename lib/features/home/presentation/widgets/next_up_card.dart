@@ -32,7 +32,7 @@ class NextUpCard extends StatelessWidget {
     final isUni = act.isUniversity;
 
     return InkWell(
-      onTap: () => context.push('/app/activities/${act.id}'),
+      onTap: () => context.push('/activity/${act.id}'),
       borderRadius: AppRadius.radiusLg,
       child: Container(
         padding: const EdgeInsets.all(AppSpacing.lg),

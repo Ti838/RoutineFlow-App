@@ -65,7 +65,7 @@ class DailyTimelineView extends StatelessWidget {
           }
 
           return InkWell(
-            onTap: () => context.push('/app/activities/${act.id}'),
+            onTap: () => context.push('/activity/${act.id}'),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
               child: Row(

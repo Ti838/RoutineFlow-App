@@ -54,13 +54,15 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
 
     if (!mounted) return;
 
-    if (prompt.toLowerCase().contains('exam') || prompt.toLowerCase().contains('study')) {
+    if (prompt.toLowerCase().contains('exam') ||
+        prompt.toLowerCase().contains('study')) {
       _suggestions = [
         AISuggestionCardData(
           title: 'DSA: Dynamic Programming Review',
           timeRange: '16:00 – 17:30',
           category: 'Study',
-          reason: 'Scheduled during your 2.5h afternoon free-time slot before gym.',
+          reason:
+              'Scheduled during your 2.5h afternoon free-time slot before gym.',
         ),
         AISuggestionCardData(
           title: 'Database Mock Quiz & Practice',
@@ -108,7 +110,9 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
         startTime: sTime,
         endTime: eTime,
         durationMinutes: 90,
-        category: s.category == 'Study' ? ActivityCategory.study : ActivityCategory.health,
+        category: s.category == 'Study'
+            ? ActivityCategory.study
+            : ActivityCategory.health,
         priority: Priority.high,
         status: ActivityStatus.pending,
         createdAt: DateTime.now(),
@@ -119,7 +123,9 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('AI Plan successfully added to your daily schedule!')),
+        const SnackBar(
+            content:
+                Text('AI Plan successfully added to your daily schedule!')),
       );
       setState(() => _suggestions = null);
     }
@@ -129,7 +135,9 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AI Planner', style: AppTypography.heading3.copyWith(fontWeight: FontWeight.bold)),
+        title: Text('AI Planner',
+            style:
+                AppTypography.heading3.copyWith(fontWeight: FontWeight.bold)),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(AppSpacing.xxl),
@@ -142,7 +150,8 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
                 color: AppColors.primaryContainer.withAlpha(80),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.auto_awesome, size: 48, color: AppColors.primary),
+              child: const Icon(Icons.auto_awesome,
+                  size: 48, color: AppColors.primary),
             ),
             const SizedBox(height: AppSpacing.xl),
             Text(
@@ -153,7 +162,8 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
             const SizedBox(height: AppSpacing.xs),
             Text(
               'Get personalized suggestions, optimize your schedule, and stay on track.',
-              style: AppTypography.body.copyWith(color: AppColors.textSecondaryLight),
+              style: AppTypography.body
+                  .copyWith(color: AppColors.textSecondaryLight),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: AppSpacing.xxl),
@@ -187,7 +197,8 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
                       decoration: const InputDecoration(
                         hintText: 'Type your routine request...',
                         border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       ),
                       onSubmitted: (val) {
                         if (val.trim().isNotEmpty) _askAi(val.trim());
@@ -196,8 +207,12 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
                   ),
                   IconButton(
                     icon: _isGenerating
-                        ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2))
-                        : const Icon(Icons.arrow_upward, color: AppColors.primary),
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(strokeWidth: 2))
+                        : const Icon(Icons.arrow_upward,
+                            color: AppColors.primary),
                     onPressed: _isGenerating
                         ? null
                         : () {
@@ -215,7 +230,8 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
             if (_suggestions != null) ...[
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text('Suggested Schedule Adjustments', style: AppTypography.heading3),
+                child: Text('Suggested Schedule Adjustments',
+                    style: AppTypography.heading3),
               ),
               const SizedBox(height: AppSpacing.md),
               ..._suggestions!.map((s) => _buildSuggestionTile(s)),
@@ -256,12 +272,18 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(data.title, style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.bold)),
-              Text(data.timeRange, style: AppTypography.small.copyWith(color: AppColors.primary, fontWeight: FontWeight.bold)),
+              Text(data.title,
+                  style: AppTypography.bodyMedium
+                      .copyWith(fontWeight: FontWeight.bold)),
+              Text(data.timeRange,
+                  style: AppTypography.small.copyWith(
+                      color: AppColors.primary, fontWeight: FontWeight.bold)),
             ],
           ),
           const SizedBox(height: 4),
-          Text(data.reason, style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight)),
+          Text(data.reason,
+              style: AppTypography.small
+                  .copyWith(color: AppColors.textSecondaryLight)),
         ],
       ),
     );

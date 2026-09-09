@@ -92,7 +92,8 @@ class HabitsNotifier extends StateNotifier<List<HabitItem>> {
         final nowCompleted = !h.isCompletedToday;
         return h.copyWith(
           isCompletedToday: nowCompleted,
-          completedDays: nowCompleted ? h.completedDays + 1 : h.completedDays - 1,
+          completedDays:
+              nowCompleted ? h.completedDays + 1 : h.completedDays - 1,
         );
       }
       return h;
@@ -100,7 +101,8 @@ class HabitsNotifier extends StateNotifier<List<HabitItem>> {
   }
 }
 
-final habitsProvider = StateNotifierProvider<HabitsNotifier, List<HabitItem>>((ref) {
+final habitsProvider =
+    StateNotifierProvider<HabitsNotifier, List<HabitItem>>((ref) {
   return HabitsNotifier();
 });
 
@@ -113,7 +115,9 @@ class HabitsScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Habits', style: AppTypography.heading3.copyWith(fontWeight: FontWeight.bold)),
+        title: Text('Habits',
+            style:
+                AppTypography.heading3.copyWith(fontWeight: FontWeight.bold)),
       ),
       body: ListView(
         padding: const EdgeInsets.all(AppSpacing.lg),
@@ -122,11 +126,21 @@ class HabitsScreen extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ChoiceChip(label: const Text('Today'), selected: true, selectedColor: AppColors.primaryContainer, onSelected: (_) {}),
+              ChoiceChip(
+                  label: const Text('Today'),
+                  selected: true,
+                  selectedColor: AppColors.primaryContainer,
+                  onSelected: (_) {}),
               const SizedBox(width: 8),
-              ChoiceChip(label: const Text('Week'), selected: false, onSelected: (_) {}),
+              ChoiceChip(
+                  label: const Text('Week'),
+                  selected: false,
+                  onSelected: (_) {}),
               const SizedBox(width: 8),
-              ChoiceChip(label: const Text('Month'), selected: false, onSelected: (_) {}),
+              ChoiceChip(
+                  label: const Text('Month'),
+                  selected: false,
+                  onSelected: (_) {}),
             ],
           ),
           const SizedBox(height: AppSpacing.lg),
@@ -144,17 +158,21 @@ class HabitsScreen extends ConsumerWidget {
               child: Row(
                 children: [
                   InkWell(
-                    onTap: () => ref.read(habitsProvider.notifier).toggleHabit(habit.id),
+                    onTap: () =>
+                        ref.read(habitsProvider.notifier).toggleHabit(habit.id),
                     child: Container(
                       width: 32,
                       height: 32,
                       decoration: BoxDecoration(
-                        color: habit.isCompletedToday ? habit.color : Colors.transparent,
+                        color: habit.isCompletedToday
+                            ? habit.color
+                            : Colors.transparent,
                         shape: BoxShape.circle,
                         border: Border.all(color: habit.color, width: 2),
                       ),
                       child: habit.isCompletedToday
-                          ? const Icon(Icons.check, size: 20, color: Colors.white)
+                          ? const Icon(Icons.check,
+                              size: 20, color: Colors.white)
                           : null,
                     ),
                   ),
@@ -163,17 +181,21 @@ class HabitsScreen extends ConsumerWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(habit.title, style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.bold)),
+                        Text(habit.title,
+                            style: AppTypography.bodyMedium
+                                .copyWith(fontWeight: FontWeight.bold)),
                         const SizedBox(height: 2),
                         Text(
                           '${habit.completedDays}/${habit.targetDays} days completed this week',
-                          style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight),
+                          style: AppTypography.small
+                              .copyWith(color: AppColors.textSecondaryLight),
                         ),
                       ],
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
                       color: habit.color.withAlpha(25),
                       borderRadius: AppRadius.radiusPill,

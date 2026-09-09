@@ -13,8 +13,10 @@ import '../../../activities/presentation/screens/create_edit_activity_sheet.dart
 
 enum CalendarViewType { day, week, month }
 
-final calendarViewTypeProvider = StateProvider<CalendarViewType>((ref) => CalendarViewType.day);
-final calendarSelectedDateProvider = StateProvider<DateTime>((ref) => DateTime.now());
+final calendarViewTypeProvider =
+    StateProvider<CalendarViewType>((ref) => CalendarViewType.day);
+final calendarSelectedDateProvider =
+    StateProvider<DateTime>((ref) => DateTime.now());
 
 class CalendarScreen extends ConsumerWidget {
   const CalendarScreen({super.key});
@@ -49,7 +51,8 @@ class CalendarScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.today),
             onPressed: () {
-              ref.read(calendarSelectedDateProvider.notifier).state = DateTime.now();
+              ref.read(calendarSelectedDateProvider.notifier).state =
+                  DateTime.now();
             },
           ),
         ],
@@ -62,8 +65,10 @@ class CalendarScreen extends ConsumerWidget {
             child: SegmentedButton<CalendarViewType>(
               segments: const [
                 ButtonSegment(value: CalendarViewType.day, label: Text('Day')),
-                ButtonSegment(value: CalendarViewType.week, label: Text('Week')),
-                ButtonSegment(value: CalendarViewType.month, label: Text('Month')),
+                ButtonSegment(
+                    value: CalendarViewType.week, label: Text('Week')),
+                ButtonSegment(
+                    value: CalendarViewType.month, label: Text('Month')),
               ],
               selected: {viewType},
               onSelectionChanged: (set) {
@@ -79,14 +84,16 @@ class CalendarScreen extends ConsumerWidget {
               loading: () => const Center(child: CircularProgressIndicator()),
               error: (err, st) => Center(child: Text('Error: $err')),
               data: (activities) {
-                return _buildCalendarView(context, ref, viewType, selectedDate, activities);
+                return _buildCalendarView(
+                    context, ref, viewType, selectedDate, activities);
               },
             ),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => CreateEditActivitySheet.show(context, defaultDate: selectedDate),
+        onPressed: () =>
+            CreateEditActivitySheet.show(context, defaultDate: selectedDate),
         backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
         child: const Icon(Icons.add),
@@ -102,11 +109,12 @@ class CalendarScreen extends ConsumerWidget {
     List<Activity> activities,
   ) {
     // Day Schedule
-    final dayActivities = activities.where((a) =>
-      a.date.year == selectedDate.year &&
-      a.date.month == selectedDate.month &&
-      a.date.day == selectedDate.day
-    ).toList();
+    final dayActivities = activities
+        .where((a) =>
+            a.date.year == selectedDate.year &&
+            a.date.month == selectedDate.month &&
+            a.date.day == selectedDate.day)
+        .toList();
     dayActivities.sort((a, b) => a.startTime.compareTo(b.startTime));
 
     return ListView(
@@ -123,7 +131,8 @@ class CalendarScreen extends ConsumerWidget {
             alignment: Alignment.center,
             child: Text(
               'No events scheduled for ${DateTimeUtils.formatShortDate(selectedDate)}',
-              style: AppTypography.body.copyWith(color: AppColors.textSecondaryLight),
+              style: AppTypography.body
+                  .copyWith(color: AppColors.textSecondaryLight),
             ),
           )
         else
@@ -133,7 +142,8 @@ class CalendarScreen extends ConsumerWidget {
   }
 
   Widget _buildDaysHeader(WidgetRef ref, DateTime selectedDate) {
-    final startOfWeek = selectedDate.subtract(Duration(days: selectedDate.weekday - 1));
+    final startOfWeek =
+        selectedDate.subtract(Duration(days: selectedDate.weekday - 1));
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -144,7 +154,8 @@ class CalendarScreen extends ConsumerWidget {
             day.day == selectedDate.day;
 
         return GestureDetector(
-          onTap: () => ref.read(calendarSelectedDateProvider.notifier).state = day,
+          onTap: () =>
+              ref.read(calendarSelectedDateProvider.notifier).state = day,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             decoration: BoxDecoration(
@@ -156,7 +167,9 @@ class CalendarScreen extends ConsumerWidget {
                 Text(
                   DateTimeUtils.formatDayOfWeek(day),
                   style: AppTypography.small.copyWith(
-                    color: isSelected ? Colors.white70 : AppColors.textSecondaryLight,
+                    color: isSelected
+                        ? Colors.white70
+                        : AppColors.textSecondaryLight,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -177,7 +190,11 @@ class CalendarScreen extends ConsumerWidget {
 
   Widget _buildScheduleEventCard(BuildContext context, Activity activity) {
     final isUni = activity.isUniversity;
-    final color = isUni ? AppColors.university : (activity.category.name == 'study' ? AppColors.study : AppColors.personal);
+    final color = isUni
+        ? AppColors.university
+        : (activity.category.name == 'study'
+            ? AppColors.study
+            : AppColors.personal);
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -196,13 +213,17 @@ class CalendarScreen extends ConsumerWidget {
             borderRadius: BorderRadius.circular(2),
           ),
         ),
-        title: Text(activity.title, style: AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.bold)),
+        title: Text(activity.title,
+            style:
+                AppTypography.bodyMedium.copyWith(fontWeight: FontWeight.bold)),
         subtitle: Text(
           '${activity.startTime} – ${activity.endTime} • ${activity.category.label}${activity.room != null ? " (${activity.room})" : ""}',
-          style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight),
+          style:
+              AppTypography.small.copyWith(color: AppColors.textSecondaryLight),
         ),
-        trailing: StatusBadge.category(activity.category.label, color, color.withAlpha(30)),
-        onTap: () => context.push('/app/activities/${activity.id}'),
+        trailing: StatusBadge.category(
+            activity.category.label, color, color.withAlpha(30)),
+        onTap: () => context.push('/activity/${activity.id}'),
       ),
     );
   }

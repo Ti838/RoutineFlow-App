@@ -47,11 +47,16 @@ class MyDayScreen extends ConsumerWidget {
               actions: [
                 IconButton(
                   icon: const Icon(Icons.notifications_none_outlined),
-                  onPressed: () => context.push('/app/notifications'),
+                  onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('No unread schedule notifications.'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  ),
                 ),
                 IconButton(
                   icon: const Icon(Icons.auto_awesome_outlined, color: AppColors.primary),
-                  onPressed: () => context.push('/app/ai'),
+                  onPressed: () => context.push('/ai-planner'),
                 ),
               ],
             ),
@@ -147,7 +152,12 @@ class MyDayScreen extends ConsumerWidget {
           const SizedBox(width: 16),
           IconButton(
             icon: const Icon(Icons.notifications_none_outlined),
-            onPressed: () => context.push('/app/notifications'),
+            onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('No unread schedule notifications.'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  ),
           ),
           const SizedBox(width: 8),
           CircleAvatar(

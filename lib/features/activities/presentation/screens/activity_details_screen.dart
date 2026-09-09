@@ -23,6 +23,16 @@ class ActivityDetailsScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Activity Details'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            if (context.canPop()) {
+              context.pop();
+            } else {
+              context.go('/my-day');
+            }
+          },
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit_outlined),

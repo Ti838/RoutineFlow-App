@@ -17,9 +17,11 @@ class CreateEditActivitySheet extends ConsumerStatefulWidget {
   final Activity? activityToEdit;
   final DateTime? defaultDate;
 
-  const CreateEditActivitySheet({super.key, this.activityToEdit, this.defaultDate});
+  const CreateEditActivitySheet(
+      {super.key, this.activityToEdit, this.defaultDate});
 
-  static Future<void> show(BuildContext context, {Activity? activityToEdit, DateTime? defaultDate}) {
+  static Future<void> show(BuildContext context,
+      {Activity? activityToEdit, DateTime? defaultDate}) {
     return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -32,10 +34,12 @@ class CreateEditActivitySheet extends ConsumerStatefulWidget {
   }
 
   @override
-  ConsumerState<CreateEditActivitySheet> createState() => _CreateEditActivitySheetState();
+  ConsumerState<CreateEditActivitySheet> createState() =>
+      _CreateEditActivitySheetState();
 }
 
-class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivitySheet> {
+class _CreateEditActivitySheetState
+    extends ConsumerState<CreateEditActivitySheet> {
   late TextEditingController _titleController;
   late TextEditingController _descController;
   late TextEditingController _locationController;
@@ -60,8 +64,12 @@ class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivityShee
     _notesController = TextEditingController(text: edit?.notes ?? '');
 
     _selectedDate = edit?.date ?? widget.defaultDate ?? DateTime.now();
-    _startTime = edit != null ? _parseTime(edit.startTime) : const TimeOfDay(hour: 9, minute: 0);
-    _endTime = edit != null ? _parseTime(edit.endTime) : const TimeOfDay(hour: 10, minute: 30);
+    _startTime = edit != null
+        ? _parseTime(edit.startTime)
+        : const TimeOfDay(hour: 9, minute: 0);
+    _endTime = edit != null
+        ? _parseTime(edit.endTime)
+        : const TimeOfDay(hour: 10, minute: 30);
     _category = edit?.category ?? ActivityCategory.study;
     _priority = edit?.priority ?? Priority.medium;
     _recurrence = edit?.recurrence ?? RecurrenceType.none;
@@ -109,24 +117,32 @@ class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivityShee
       id: widget.activityToEdit?.id ?? const Uuid().v4(),
       userId: widget.activityToEdit?.userId ?? 'user_1',
       title: _titleController.text.trim(),
-      description: _descController.text.trim().isNotEmpty ? _descController.text.trim() : null,
+      description: _descController.text.trim().isNotEmpty
+          ? _descController.text.trim()
+          : null,
       date: _selectedDate,
       startTime: _formatTime(_startTime),
       endTime: _formatTime(_endTime),
       durationMinutes: duration,
-      location: _locationController.text.trim().isNotEmpty ? _locationController.text.trim() : null,
+      location: _locationController.text.trim().isNotEmpty
+          ? _locationController.text.trim()
+          : null,
       category: _category,
       priority: _priority,
       status: widget.activityToEdit?.status ?? ActivityStatus.pending,
       recurrence: _recurrence,
       reminderMinutes: _reminderMinutes,
-      notes: _notesController.text.trim().isNotEmpty ? _notesController.text.trim() : null,
+      notes: _notesController.text.trim().isNotEmpty
+          ? _notesController.text.trim()
+          : null,
       createdAt: widget.activityToEdit?.createdAt ?? DateTime.now(),
       updatedAt: DateTime.now(),
     );
 
     if (widget.activityToEdit != null) {
-      await ref.read(activityNotifierProvider.notifier).updateActivity(activity);
+      await ref
+          .read(activityNotifierProvider.notifier)
+          .updateActivity(activity);
     } else {
       await ref.read(activityNotifierProvider.notifier).addActivity(activity);
     }
@@ -165,7 +181,9 @@ class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivityShee
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  widget.activityToEdit != null ? 'Edit Activity' : 'Quick Add Activity',
+                  widget.activityToEdit != null
+                      ? 'Edit Activity'
+                      : 'Quick Add Activity',
                   style: AppTypography.heading3,
                 ),
                 IconButton(
@@ -195,27 +213,37 @@ class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivityShee
                           final picked = await showDatePicker(
                             context: context,
                             initialDate: _selectedDate,
-                            firstDate: DateTime.now().subtract(const Duration(days: 365)),
-                            lastDate: DateTime.now().add(const Duration(days: 365)),
+                            firstDate: DateTime.now()
+                                .subtract(const Duration(days: 365)),
+                            lastDate:
+                                DateTime.now().add(const Duration(days: 365)),
                           );
-                          if (picked != null) setState(() => _selectedDate = picked);
+                          if (picked != null) {
+                            setState(() => _selectedDate = picked);
+                          }
                         },
                         child: Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Theme.of(context).dividerColor),
+                            border: Border.all(
+                                color: Theme.of(context).dividerColor),
                             borderRadius: AppRadius.radiusMd,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Date', style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight)),
+                              Text('Date',
+                                  style: AppTypography.small.copyWith(
+                                      color: AppColors.textSecondaryLight)),
                               const SizedBox(height: 4),
                               Row(
                                 children: [
-                                  const Icon(Icons.calendar_today, size: 16, color: AppColors.primary),
+                                  const Icon(Icons.calendar_today,
+                                      size: 16, color: AppColors.primary),
                                   const SizedBox(width: 6),
-                                  Text('${_selectedDate.month}/${_selectedDate.day}/${_selectedDate.year}', style: AppTypography.bodyMedium),
+                                  Text(
+                                      '${_selectedDate.month}/${_selectedDate.day}/${_selectedDate.year}',
+                                      style: AppTypography.bodyMedium),
                                 ],
                               ),
                             ],
@@ -227,25 +255,33 @@ class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivityShee
                     Expanded(
                       child: InkWell(
                         onTap: () async {
-                          final picked = await showTimePicker(context: context, initialTime: _startTime);
-                          if (picked != null) setState(() => _startTime = picked);
+                          final picked = await showTimePicker(
+                              context: context, initialTime: _startTime);
+                          if (picked != null) {
+                            setState(() => _startTime = picked);
+                          }
                         },
                         child: Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Theme.of(context).dividerColor),
+                            border: Border.all(
+                                color: Theme.of(context).dividerColor),
                             borderRadius: AppRadius.radiusMd,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Start Time', style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight)),
+                              Text('Start Time',
+                                  style: AppTypography.small.copyWith(
+                                      color: AppColors.textSecondaryLight)),
                               const SizedBox(height: 4),
                               Row(
                                 children: [
-                                  const Icon(Icons.access_time, size: 16, color: AppColors.primary),
+                                  const Icon(Icons.access_time,
+                                      size: 16, color: AppColors.primary),
                                   const SizedBox(width: 6),
-                                  Text(_formatTime(_startTime), style: AppTypography.bodyMedium),
+                                  Text(_formatTime(_startTime),
+                                      style: AppTypography.bodyMedium),
                                 ],
                               ),
                             ],
@@ -257,25 +293,33 @@ class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivityShee
                     Expanded(
                       child: InkWell(
                         onTap: () async {
-                          final picked = await showTimePicker(context: context, initialTime: _endTime);
-                          if (picked != null) setState(() => _endTime = picked);
+                          final picked = await showTimePicker(
+                              context: context, initialTime: _endTime);
+                          if (picked != null) {
+                            setState(() => _endTime = picked);
+                          }
                         },
                         child: Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Theme.of(context).dividerColor),
+                            border: Border.all(
+                                color: Theme.of(context).dividerColor),
                             borderRadius: AppRadius.radiusMd,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('End Time', style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight)),
+                              Text('End Time',
+                                  style: AppTypography.small.copyWith(
+                                      color: AppColors.textSecondaryLight)),
                               const SizedBox(height: 4),
                               Row(
                                 children: [
-                                  const Icon(Icons.access_time_filled, size: 16, color: AppColors.primary),
+                                  const Icon(Icons.access_time_filled,
+                                      size: 16, color: AppColors.primary),
                                   const SizedBox(width: 6),
-                                  Text(_formatTime(_endTime), style: AppTypography.bodyMedium),
+                                  Text(_formatTime(_endTime),
+                                      style: AppTypography.bodyMedium),
                                 ],
                               ),
                             ],
@@ -286,7 +330,9 @@ class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivityShee
                   ],
                 ),
                 const SizedBox(height: AppSpacing.lg),
-                Text('Category', style: AppTypography.caption.copyWith(fontWeight: FontWeight.w600)),
+                Text('Category',
+                    style: AppTypography.caption
+                        .copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 8,
@@ -302,7 +348,9 @@ class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivityShee
                   }).toList(),
                 ),
                 const SizedBox(height: AppSpacing.lg),
-                Text('Priority', style: AppTypography.caption.copyWith(fontWeight: FontWeight.w600)),
+                Text('Priority',
+                    style: AppTypography.caption
+                        .copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: 8),
                 Row(
                   children: Priority.values.map((p) {
@@ -319,12 +367,18 @@ class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivityShee
                   }).toList(),
                 ),
                 const SizedBox(height: AppSpacing.lg),
-                Text('Recurrence', style: AppTypography.caption.copyWith(fontWeight: FontWeight.w600)),
+                Text('Recurrence',
+                    style: AppTypography.caption
+                        .copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: 8),
                 DropdownButtonFormField<RecurrenceType>(
                   initialValue: _recurrence,
-                  decoration: const InputDecoration(prefixIcon: Icon(Icons.repeat)),
-                  items: RecurrenceType.values.map((r) => DropdownMenuItem(value: r, child: Text(r.label))).toList(),
+                  decoration:
+                      const InputDecoration(prefixIcon: Icon(Icons.repeat)),
+                  items: RecurrenceType.values
+                      .map((r) =>
+                          DropdownMenuItem(value: r, child: Text(r.label)))
+                      .toList(),
                   onChanged: (val) {
                     if (val != null) setState(() => _recurrence = val);
                   },
@@ -349,7 +403,9 @@ class _CreateEditActivitySheetState extends ConsumerState<CreateEditActivityShee
           Padding(
             padding: const EdgeInsets.all(20),
             child: PrimaryButton(
-              text: widget.activityToEdit != null ? 'Save Changes' : 'Create Activity',
+              text: widget.activityToEdit != null
+                  ? 'Save Changes'
+                  : 'Create Activity',
               isLoading: _isLoading,
               onPressed: _saveActivity,
             ),

@@ -22,7 +22,7 @@ class ProfileScreen extends ConsumerWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.settings_outlined),
-            onPressed: () => context.push('/app/settings'),
+            onPressed: () => context.push('/settings'),
           ),
         ],
       ),
@@ -109,11 +109,22 @@ class ProfileScreen extends ConsumerWidget {
           const SizedBox(height: AppSpacing.lg),
 
           // Menu Options
-          _menuTile(context, Icons.auto_awesome_outlined, 'AI Routine Assistant', () => context.push('/app/ai')),
-          _menuTile(context, Icons.insights_outlined, 'Productivity Analytics', () => context.push('/app/analytics')),
-          _menuTile(context, Icons.repeat_outlined, 'Habits & Streaks', () => context.push('/app/habits')),
-          _menuTile(context, Icons.workspace_premium_outlined, 'Subscription & Pro Features', () => context.push('/app/subscription')),
-          _menuTile(context, Icons.lock_outline, 'Privacy & Security Separation', () => {}),
+          _menuTile(context, Icons.auto_awesome_outlined, 'AI Routine Assistant', () => context.push('/ai-planner')),
+          _menuTile(context, Icons.insights_outlined, 'Productivity Analytics', () => context.push('/analytics')),
+          _menuTile(context, Icons.repeat_outlined, 'Habits & Streaks', () => context.push('/habits')),
+          _menuTile(context, Icons.workspace_premium_outlined, 'Subscription & Pro Features', () => context.push('/subscription')),
+          _menuTile(context, Icons.lock_outline, 'Privacy & Security Separation', () {
+            showDialog(
+              context: context,
+              builder: (ctx) => AlertDialog(
+                title: const Text('Data Privacy & Security'),
+                content: const Text('Routine Flow uses Row-Level Security (RLS) and local SQLite encryption to ensure your personal routines remain strictly private from institutional access.'),
+                actions: [
+                  TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Got it')),
+                ],
+              ),
+            );
+          }),
           const SizedBox(height: AppSpacing.lg),
 
           // Logout Button
