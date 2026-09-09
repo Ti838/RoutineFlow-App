@@ -24,12 +24,14 @@ class CurrentActivityCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const Icon(Icons.check_circle_outline, color: AppColors.study, size: 28),
+            const Icon(Icons.check_circle_outline,
+                color: AppColors.study, size: 28),
             const SizedBox(width: AppSpacing.md),
             Expanded(
               child: Text(
                 'No active ongoing activity right now.',
-                style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondaryLight),
+                style: AppTypography.bodyMedium
+                    .copyWith(color: AppColors.textSecondaryLight),
               ),
             ),
           ],
@@ -48,10 +50,15 @@ class CurrentActivityCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: AppRadius.radiusLg,
-          border: Border.all(color: isUni ? AppColors.university.withAlpha(60) : AppColors.study.withAlpha(60), width: 1.5),
+          border: Border.all(
+              color: isUni
+                  ? AppColors.university.withAlpha(60)
+                  : AppColors.study.withAlpha(60),
+              width: 1.5),
           boxShadow: [
             BoxShadow(
-              color: (isUni ? AppColors.university : AppColors.study).withAlpha(15),
+              color: (isUni ? AppColors.university : AppColors.study)
+                  .withAlpha(15),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -65,7 +72,8 @@ class CurrentActivityCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: (isUni ? AppColors.university : AppColors.study).withAlpha(25),
+                    color: (isUni ? AppColors.university : AppColors.study)
+                        .withAlpha(25),
                     borderRadius: AppRadius.radiusMd,
                   ),
                   child: Icon(
@@ -81,14 +89,16 @@ class CurrentActivityCard extends StatelessWidget {
                     children: [
                       Text(
                         act.title,
-                        style: AppTypography.heading3.copyWith(fontWeight: FontWeight.w700),
+                        style: AppTypography.heading3
+                            .copyWith(fontWeight: FontWeight.w700),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 2),
                       Text(
                         '${act.startTime} – ${act.endTime}',
-                        style: AppTypography.caption.copyWith(color: AppColors.textSecondaryLight),
+                        style: AppTypography.caption
+                            .copyWith(color: AppColors.textSecondaryLight),
                       ),
                     ],
                   ),
@@ -105,7 +115,8 @@ class CurrentActivityCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Icon(Icons.play_circle_fill, color: AppColors.study, size: 20),
+                    const Icon(Icons.play_circle_fill,
+                        color: AppColors.study, size: 20),
                     const SizedBox(width: 6),
                     Text(
                       '1h 24m left',
@@ -119,11 +130,13 @@ class CurrentActivityCard extends StatelessWidget {
                 if (act.location != null)
                   Row(
                     children: [
-                      const Icon(Icons.location_on_outlined, size: 16, color: AppColors.textSecondaryLight),
+                      const Icon(Icons.location_on_outlined,
+                          size: 16, color: AppColors.textSecondaryLight),
                       const SizedBox(width: 4),
                       Text(
                         act.location!,
-                        style: AppTypography.small.copyWith(color: AppColors.textSecondaryLight),
+                        style: AppTypography.small
+                            .copyWith(color: AppColors.textSecondaryLight),
                       ),
                     ],
                   ),

@@ -43,16 +43,15 @@ class OnboardingScreen extends StatelessWidget {
               ),
               const Spacer(),
               PrimaryButton(
-                text: 'Get Started & Test',
+                text: 'Get Started',
                 height: 52,
-                onPressed: () => context.go('/login'),
+                onPressed: () => context.go('/register'),
               ),
               const SizedBox(height: AppSpacing.md),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Already have an account? ',
-                      style: AppTypography.caption),
+                  Text('Already have an account? ', style: AppTypography.caption),
                   GestureDetector(
                     onTap: () => context.go('/login'),
                     child: Text(
