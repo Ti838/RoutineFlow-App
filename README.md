@@ -2,6 +2,12 @@
   <img src="assets/images/logo.png" alt="RoutineFlow Logo" width="150"/>
 </p>
 
+<p align="center">
+  <a href="https://github.com/Ti838/RoutineFlow-App/actions/workflows/android.yml">
+    <img src="https://img.shields.io/badge/Download-Latest_APK-blue?style=for-the-badge&logo=android" alt="Download APK" />
+  </a>
+</p>
+
 # RoutineFlow 🚀
 
 RoutineFlow is an advanced, AI-powered productivity and academic management suite designed to elevate your time management, routine tracking, and university schedules. This project features a clean, responsive, and pro-level UI built natively with Flutter.
