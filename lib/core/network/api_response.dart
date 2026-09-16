@@ -15,8 +15,12 @@ class ApiResponse<T> {
   ) {
     return ApiResponse<T>(
       success: json['success'] as bool? ?? false,
-      data: json['data'] != null && fromJsonT != null ? fromJsonT(json['data']) : json['data'] as T?,
-      error: json['error'] != null ? ApiError.fromJson(json['error'] as Map<String, dynamic>) : null,
+      data: json['data'] != null && fromJsonT != null
+          ? fromJsonT(json['data'])
+          : json['data'] as T?,
+      error: json['error'] != null
+          ? ApiError.fromJson(json['error'] as Map<String, dynamic>)
+          : null,
     );
   }
 }

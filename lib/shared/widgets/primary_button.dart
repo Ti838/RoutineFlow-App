@@ -34,7 +34,8 @@ class PrimaryButton extends StatelessWidget {
           onPressed: isLoading ? null : onPressed,
           style: OutlinedButton.styleFrom(
             side: BorderSide(color: effectiveColor, width: 1.5),
-            shape: const RoundedRectangleBorder(borderRadius: AppRadius.radiusMd),
+            shape:
+                const RoundedRectangleBorder(borderRadius: AppRadius.radiusMd),
           ),
           child: _buildChild(effectiveColor),
         ),
@@ -70,10 +71,14 @@ class PrimaryButton extends StatelessWidget {
         children: [
           Icon(icon, size: 18, color: textColor),
           const SizedBox(width: 8),
-          Text(text, style: AppTypography.bodyMedium.copyWith(color: textColor, fontWeight: FontWeight.w600)),
+          Text(text,
+              style: AppTypography.bodyMedium
+                  .copyWith(color: textColor, fontWeight: FontWeight.w600)),
         ],
       );
     }
-    return Text(text, style: AppTypography.bodyMedium.copyWith(color: textColor, fontWeight: FontWeight.w600));
+    return Text(text,
+        style: AppTypography.bodyMedium
+            .copyWith(color: textColor, fontWeight: FontWeight.w600));
   }
 }

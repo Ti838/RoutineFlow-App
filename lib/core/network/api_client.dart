@@ -36,7 +36,8 @@ class ApiClient {
     );
   }
 
-  Future<Response> get(String path, {Map<String, dynamic>? queryParameters}) async {
+  Future<Response> get(String path,
+      {Map<String, dynamic>? queryParameters}) async {
     try {
       return await dio.get(path, queryParameters: queryParameters);
     } on DioException catch (e) {
@@ -73,13 +74,15 @@ class ApiClient {
       final data = e.response!.data as Map;
       final error = data['error'];
       if (error is Map) {
-        return ServerException(error['message']?.toString() ?? 'Server error', error['code']?.toString());
+        return ServerException(error['message']?.toString() ?? 'Server error',
+            error['code']?.toString());
       }
     }
     if (e.type == DioExceptionType.connectionTimeout ||
         e.type == DioExceptionType.receiveTimeout ||
         e.type == DioExceptionType.connectionError) {
-      return NetworkException('Unable to connect to server. Please check your internet connection.');
+      return NetworkException(
+          'Unable to connect to server. Please check your internet connection.');
     }
     return ServerException(e.message ?? 'Unknown network error occurred');
   }

@@ -29,7 +29,8 @@ class RecurrenceEngine {
           current = current.add(const Duration(days: 7));
           break;
         case RecurrenceType.monthly:
-          current = DateTime(current.year, current.month + 1, current.day, current.hour, current.minute);
+          current = DateTime(current.year, current.month + 1, current.day,
+              current.hour, current.minute);
           break;
         case RecurrenceType.none:
           break;

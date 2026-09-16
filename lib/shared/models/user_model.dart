@@ -36,14 +36,14 @@ class UserModel {
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'email': email,
-    'profileImageUrl': profileImageUrl,
-    'universityName': universityName,
-    'department': department,
-    'semester': semester,
-    'studentId': studentId,
-    'isPremium': isPremium,
-  };
+        'id': id,
+        'name': name,
+        'email': email,
+        'profileImageUrl': profileImageUrl,
+        'universityName': universityName,
+        'department': department,
+        'semester': semester,
+        'studentId': studentId,
+        'isPremium': isPremium,
+      };
 }

@@ -57,7 +57,10 @@ class SyncEngine {
               success = true;
               break;
             case 'delete':
-              await _supabase!.from(item.entityType).delete().eq('id', item.entityId);
+              await _supabase!
+                  .from(item.entityType)
+                  .delete()
+                  .eq('id', item.entityId);
               success = true;
               break;
           }

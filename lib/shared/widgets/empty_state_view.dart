@@ -44,7 +44,8 @@ class EmptyStateView extends StatelessWidget {
             const SizedBox(height: AppSpacing.sm),
             Text(
               description,
-              style: AppTypography.body.copyWith(color: AppColors.textSecondaryLight),
+              style: AppTypography.body
+                  .copyWith(color: AppColors.textSecondaryLight),
               textAlign: TextAlign.center,
             ),
             if (actionText != null && onAction != null) ...[

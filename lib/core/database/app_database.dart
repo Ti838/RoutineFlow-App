@@ -23,24 +23,24 @@ class SyncQueueItem {
   });
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'entityType': entityType,
-    'entityId': entityId,
-    'action': action,
-    'payload': payload,
-    'createdAt': createdAt.toIso8601String(),
-    'retryCount': retryCount,
-  };
+        'id': id,
+        'entityType': entityType,
+        'entityId': entityId,
+        'action': action,
+        'payload': payload,
+        'createdAt': createdAt.toIso8601String(),
+        'retryCount': retryCount,
+      };
 
   factory SyncQueueItem.fromJson(Map<String, dynamic> json) => SyncQueueItem(
-    id: json['id'] as int,
-    entityType: json['entityType'] as String,
-    entityId: json['entityId'] as String,
-    action: json['action'] as String,
-    payload: (json['payload'] as Map<String, dynamic>?) ?? {},
-    createdAt: DateTime.parse(json['createdAt'] as String),
-    retryCount: json['retryCount'] as int? ?? 0,
-  );
+        id: json['id'] as int,
+        entityType: json['entityType'] as String,
+        entityId: json['entityId'] as String,
+        action: json['action'] as String,
+        payload: (json['payload'] as Map<String, dynamic>?) ?? {},
+        createdAt: DateTime.parse(json['createdAt'] as String),
+        retryCount: json['retryCount'] as int? ?? 0,
+      );
 }
 
 class AppDatabase {
@@ -57,14 +57,16 @@ class AppDatabase {
     final prefs = await SharedPreferences.getInstance();
     final list = await getSyncQueue();
     list.add(item);
-    await prefs.setStringList(_syncQueueKey, list.map((i) => jsonEncode(i.toJson())).toList());
+    await prefs.setStringList(
+        _syncQueueKey, list.map((i) => jsonEncode(i.toJson())).toList());
   }
 
   Future<void> removeSyncQueueItem(int id) async {
     final prefs = await SharedPreferences.getInstance();
     final list = await getSyncQueue();
     list.removeWhere((i) => i.id == id);
-    await prefs.setStringList(_syncQueueKey, list.map((i) => jsonEncode(i.toJson())).toList());
+    await prefs.setStringList(
+        _syncQueueKey, list.map((i) => jsonEncode(i.toJson())).toList());
   }
 
   Future<void> updateSyncQueueItem(SyncQueueItem item) async {
@@ -73,11 +75,13 @@ class AppDatabase {
     final idx = list.indexWhere((i) => i.id == item.id);
     if (idx != -1) {
       list[idx] = item;
-      await prefs.setStringList(_syncQueueKey, list.map((i) => jsonEncode(i.toJson())).toList());
+      await prefs.setStringList(
+          _syncQueueKey, list.map((i) => jsonEncode(i.toJson())).toList());
     }
   }
 
-  Future<void> saveLocalActivities(List<Map<String, dynamic>> activities) async {
+  Future<void> saveLocalActivities(
+      List<Map<String, dynamic>> activities) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setStringList(
       _activitiesKey,

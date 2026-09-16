@@ -6,7 +6,8 @@ class AppColors {
   static const Color surfaceDark = Color(0xFF171F33);
   static const Color surfaceElevated = Color(0xFF1E293B);
   static const Color cardDark = Color(0xFF131B2E);
-  static const Color borderDark = Color(0x1FFFFFFF); // 12% white subtle glass border
+  static const Color borderDark =
+      Color(0x1FFFFFFF); // 12% white subtle glass border
 
   // Light Canvas (Fallback)
   static const Color backgroundLight = Color(0xFFF8FAFC);

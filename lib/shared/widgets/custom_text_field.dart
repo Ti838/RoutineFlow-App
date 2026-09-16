@@ -30,7 +30,8 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: AppTypography.caption.copyWith(fontWeight: FontWeight.w600)),
+        Text(label,
+            style: AppTypography.caption.copyWith(fontWeight: FontWeight.w600)),
         const SizedBox(height: 6),
         TextFormField(
           controller: controller,

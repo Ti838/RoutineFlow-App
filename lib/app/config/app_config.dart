@@ -2,9 +2,10 @@ enum Environment { dev, staging, prod }
 
 class AppConfig {
   static const String appName = 'Routine Flow';
-  static const String appTagline = 'Personal Routine + University Routine = One Unified Daily Schedule';
+  static const String appTagline =
+      'Personal Routine + University Routine = One Unified Daily Schedule';
   static const String version = '1.0.0';
-  
+
   static Environment environment = Environment.dev;
 
   static String get apiBaseUrl {

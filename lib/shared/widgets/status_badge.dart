@@ -38,7 +38,8 @@ class StatusBadge extends StatelessWidget {
         icon: Icons.warning_amber_rounded,
       );
 
-  factory StatusBadge.category(String label, Color color, Color bg) => StatusBadge(
+  factory StatusBadge.category(String label, Color color, Color bg) =>
+      StatusBadge(
         label: label,
         backgroundColor: bg,
         textColor: color,
