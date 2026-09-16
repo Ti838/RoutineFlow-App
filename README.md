@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Ti838/RoutineFlow-App/actions/workflows/android.yml">
+  <a href="https://github.com/Ti838/RoutineFlow-App/releases/latest">
     <img src="https://img.shields.io/badge/Download-Latest_APK-blue?style=for-the-badge&logo=android" alt="Download APK" />
   </a>
 </p>
