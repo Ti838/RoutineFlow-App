@@ -28,31 +28,52 @@ class PrimaryButton extends StatelessWidget {
     final effectiveColor = color ?? AppColors.primary;
 
     if (isOutlined) {
-      return SizedBox(
+      return Container(
         height: height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(999),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(3, 3),
+            )
+          ],
+        ),
         child: OutlinedButton(
           onPressed: isLoading ? null : onPressed,
           style: OutlinedButton.styleFrom(
-            side: BorderSide(color: effectiveColor, width: 1.5),
-            shape:
-                const RoundedRectangleBorder(borderRadius: AppRadius.radiusMd),
+            backgroundColor: Colors.white,
+            side: const BorderSide(color: Colors.black, width: 3),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(999)),
           ),
-          child: _buildChild(effectiveColor),
+          child: _buildChild(Colors.black),
         ),
       );
     }
 
-    return SizedBox(
+    return Container(
       height: height,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(999),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black,
+            offset: Offset(3, 3),
+          )
+        ],
+      ),
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: effectiveColor,
-          foregroundColor: Colors.white,
+          foregroundColor: Colors.black,
           elevation: 0,
-          shape: const RoundedRectangleBorder(borderRadius: AppRadius.radiusMd),
+          side: const BorderSide(color: Colors.black, width: 3),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
         ),
-        child: _buildChild(Colors.white),
+        child: _buildChild(Colors.black),
       ),
     );
   }

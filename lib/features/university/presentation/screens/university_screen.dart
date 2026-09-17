@@ -48,21 +48,56 @@ class _TimetableView extends StatelessWidget {
       itemCount: 5,
       itemBuilder: (context, index) {
         final days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-        return Card(
-          margin: const EdgeInsets.only(bottom: 16),
+        final colors = [
+          const Color(0xFFFFB3D4),
+          const Color(0xFFD4C2FF),
+          const Color(0xFFE4F9F6),
+          const Color(0xFFFFF7E0),
+          const Color(0xFFFFD3A8),
+        ];
+
+        return Container(
+          margin: const EdgeInsets.only(bottom: 24),
+          decoration: BoxDecoration(
+            color: colors[index % colors.length],
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(color: Colors.black, width: 3),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black,
+                offset: Offset(4, 4),
+                spreadRadius: 0,
+                blurRadius: 0,
+              )
+            ],
+          ),
           child: ExpansionTile(
+            shape: const Border(),
+            collapsedShape: const Border(),
             title: Text(days[index],
-                style: const TextStyle(fontWeight: FontWeight.bold)),
+                style: const TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 18,
+                    color: Colors.black)),
             children: [
-              ListTile(
-                leading: const Icon(Icons.school, color: Colors.blue),
-                title: const Text('Data Structures'),
-                subtitle: const Text('10:00 AM - 11:30 AM • Room 402'),
-              ),
-              ListTile(
-                leading: const Icon(Icons.science, color: Colors.green),
-                title: const Text('Physics Lab'),
-                subtitle: const Text('1:00 PM - 3:00 PM • Lab 2'),
+              Container(
+                margin: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: Colors.black, width: 2),
+                ),
+                child: ListTile(
+                  leading:
+                      const Icon(Icons.school, color: Colors.black, size: 32),
+                  title: const Text('Data Structures',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.black)),
+                  subtitle: const Text('10:00 AM - 11:30 AM • Room 402',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600, color: Colors.black54)),
+                ),
               ),
             ],
           ),
@@ -81,32 +116,51 @@ class _ExamsView extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       children: [
         _buildExamCard('Midterm: Data Structures', 'Oct 15, 2026',
-            '12 Days Left', Colors.red),
-        _buildExamCard(
-            'Quiz: Algorithms', 'Oct 05, 2026', '2 Days Left', Colors.orange),
+            '12 Days Left', const Color(0xFFFF6B6B)),
+        _buildExamCard('Quiz: Algorithms', 'Oct 05, 2026', '2 Days Left',
+            const Color(0xFFFFD464)),
       ],
     );
   }
 
   Widget _buildExamCard(
       String title, String date, String countdown, Color color) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 12),
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: Colors.black, width: 3),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black,
+            offset: Offset(4, 4),
+            spreadRadius: 0,
+            blurRadius: 0,
+          )
+        ],
+      ),
       child: ListTile(
-        contentPadding: const EdgeInsets.all(16),
+        contentPadding: const EdgeInsets.all(20),
         title: Text(title,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-        subtitle: Text(date),
+            style: const TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 18,
+                color: Colors.black)),
+        subtitle: Text(date,
+            style: const TextStyle(
+                fontWeight: FontWeight.w600, color: Colors.black54)),
         trailing: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: color.withOpacity(0.5)),
+            color: color,
+            borderRadius: BorderRadius.circular(999),
+            border: Border.all(color: Colors.black, width: 2),
           ),
           child: Text(
             countdown,
-            style: TextStyle(color: color, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold),
           ),
         ),
       ),

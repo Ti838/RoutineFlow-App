@@ -10,7 +10,7 @@ class LoginScreen extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
+      backgroundColor: const Color(0xFFFFF7E0), // Soft bubbly yellow background
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -18,49 +18,59 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Spacer(),
-              // Logo
+              // Playful Logo Container
               Center(
                 child: Hero(
                   tag: 'app_logo',
                   child: Container(
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
-                      color: theme.colorScheme.primaryContainer
-                          .withValues(alpha: 0.3),
+                      color: Colors.white,
                       shape: BoxShape.circle,
+                      border: Border.all(color: Colors.black, width: 3),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black,
+                          offset: Offset(4, 4),
+                          spreadRadius: 0,
+                          blurRadius: 0,
+                        )
+                      ],
                     ),
                     child: Image.asset(
                       'assets/images/logo.png',
-                      height: 120,
-                      width: 120,
-                      errorBuilder: (context, error, stackTrace) => Icon(
-                        Icons.schedule_rounded,
+                      height: 100,
+                      width: 100,
+                      errorBuilder: (context, error, stackTrace) => const Icon(
+                        Icons.face_retouching_natural_rounded,
                         size: 80,
-                        color: theme.colorScheme.primary,
+                        color: Colors.black,
                       ),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 48),
 
               // Welcome Text
               Text(
-                'Welcome to RoutineFlow',
+                'Share the vibe',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: theme.colorScheme.onSurface,
+                  fontSize: 36,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.black,
+                  height: 1.1,
                 ),
               ),
               const SizedBox(height: 12),
               Text(
-                'Master your time, crush your goals, and elevate your productivity.',
+                'Master your time and crush your goals with a smile! ✨',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.inter(
                   fontSize: 16,
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black54,
                 ),
               ),
               const Spacer(flex: 2),
@@ -68,8 +78,6 @@ class LoginScreen extends StatelessWidget {
               // Sign in buttons
               _GoogleSignInButton(
                 onPressed: () {
-                  // TODO: Implement actual Google Auth
-                  // For now, proceed to home
                   context.go('/');
                 },
               ),
@@ -77,21 +85,22 @@ class LoginScreen extends StatelessWidget {
 
               OutlinedButton.icon(
                 onPressed: () {
-                  // TODO: Implement Apple Auth
                   context.go('/');
                 },
-                icon: const Icon(Icons.apple, color: Colors.black, size: 24),
+                icon: const Icon(Icons.apple, color: Colors.white, size: 28),
                 label: const Text('Continue with Apple'),
                 style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.black,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(999), // Pill shape
                   ),
-                  side: const BorderSide(color: Colors.black12, width: 2),
-                  textStyle: GoogleFonts.inter(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+                  side: const BorderSide(color: Colors.black, width: 3),
+                  elevation: 0,
+                  textStyle: GoogleFonts.poppins(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -104,10 +113,11 @@ class LoginScreen extends StatelessWidget {
                 },
                 child: Text(
                   'Continue as Guest',
-                  style: GoogleFonts.inter(
+                  style: GoogleFonts.poppins(
                     fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: theme.colorScheme.primary,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black87,
+                    decoration: TextDecoration.underline,
                   ),
                 ),
               ),
@@ -131,32 +141,34 @@ class _GoogleSignInButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
-        foregroundColor: Colors.black87,
-        elevation: 1,
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        foregroundColor: Colors.black,
+        elevation: 0,
+        padding: const EdgeInsets.symmetric(vertical: 20),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: Colors.black12),
+          borderRadius: BorderRadius.circular(999),
         ),
+        side: const BorderSide(color: Colors.black, width: 3),
+      ).copyWith(
+        shadowColor: WidgetStateProperty.all(Colors.transparent),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Basic Google "G" icon drawn with Flutter if no asset is available
+          // Basic Google "G" icon drawn with Flutter
           Container(
-            height: 24,
-            width: 24,
+            height: 28,
+            width: 28,
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: Colors.black,
               shape: BoxShape.circle,
             ),
             child: Center(
               child: Text(
                 'G',
                 style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w900,
                   fontSize: 18,
-                  color: Colors.blue,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -164,9 +176,9 @@ class _GoogleSignInButton extends StatelessWidget {
           const SizedBox(width: 12),
           Text(
             'Continue with Google',
-            style: GoogleFonts.inter(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
+            style: GoogleFonts.poppins(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],

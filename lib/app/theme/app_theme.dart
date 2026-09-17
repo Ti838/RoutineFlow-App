@@ -25,7 +25,9 @@ class AppTheme {
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: AppRadius.radiusLg,
-          side: const BorderSide(color: AppColors.borderLight, width: 1),
+          side: const BorderSide(
+              color: AppColors.borderLight,
+              width: 2), // Neo-brutalism thick border
         ),
         margin: EdgeInsets.zero,
       ),
@@ -38,25 +40,25 @@ class AppTheme {
       ),
       dividerTheme: const DividerThemeData(
         color: AppColors.borderLight,
-        thickness: 1,
-        space: 1,
+        thickness: 2,
+        space: 2,
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.surfaceLight,
         contentPadding:
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         border: OutlineInputBorder(
           borderRadius: AppRadius.radiusMd,
-          borderSide: const BorderSide(color: AppColors.borderLight),
+          borderSide: const BorderSide(color: AppColors.borderLight, width: 2),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: AppRadius.radiusMd,
-          borderSide: const BorderSide(color: AppColors.borderLight),
+          borderSide: const BorderSide(color: AppColors.borderLight, width: 2),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: AppRadius.radiusMd,
-          borderSide: const BorderSide(color: AppColors.primary, width: 1.5),
+          borderSide: const BorderSide(color: AppColors.primary, width: 3),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: AppRadius.radiusMd,

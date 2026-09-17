@@ -71,19 +71,28 @@ class MyDayScreen extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: colors.primaryContainer,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: colors.primary.withOpacity(0.3)),
+        color: const Color(0xFFFFB3D4), // Soft Pink
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: Colors.black, width: 3),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black,
+            offset: Offset(4, 4),
+            spreadRadius: 0,
+            blurRadius: 0,
+          )
+        ],
       ),
       child: Row(
         children: [
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: colors.primary,
+              color: Colors.white,
               shape: BoxShape.circle,
+              border: Border.all(color: Colors.black, width: 2),
             ),
-            child: const Icon(Icons.menu_book, color: Colors.white),
+            child: const Icon(Icons.menu_book, color: Colors.black),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -92,10 +101,10 @@ class MyDayScreen extends ConsumerWidget {
               children: [
                 Text(
                   'Data Structures (CSE-201)',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: colors.onPrimaryContainer,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.black,
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -103,13 +112,22 @@ class MyDayScreen extends ConsumerWidget {
                   'Room 402 • Ends in 45m',
                   style: TextStyle(
                     fontSize: 14,
-                    color: colors.onPrimaryContainer.withOpacity(0.8),
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black.withOpacity(0.7),
                   ),
                 ),
               ],
             ),
           ),
-          const Icon(Icons.chevron_right),
+          Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.black, width: 2),
+            ),
+            child: const Icon(Icons.chevron_right, color: Colors.black),
+          ),
         ],
       ),
     );
@@ -136,21 +154,26 @@ class MyDayScreen extends ConsumerWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: 3,
-      separatorBuilder: (context, index) => const SizedBox(height: 12),
+      separatorBuilder: (context, index) => const SizedBox(height: 16),
       itemBuilder: (context, index) {
         final isCompleted = index == 0;
+        final cardColor = index == 0
+            ? const Color(0xFFF0F0F0)
+            : (index == 1 ? const Color(0xFFE4F9F6) : const Color(0xFFFFF7E0));
+
         return Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: colors.surface,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey.withOpacity(0.2)),
-            boxShadow: [
+            color: cardColor,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.black, width: 3),
+            boxShadow: const [
               BoxShadow(
-                color: Colors.black.withOpacity(0.02),
-                blurRadius: 4,
-                offset: const Offset(0, 2),
-              ),
+                color: Colors.black,
+                offset: Offset(4, 4),
+                spreadRadius: 0,
+                blurRadius: 0,
+              )
             ],
           ),
           child: Row(
@@ -160,26 +183,30 @@ class MyDayScreen extends ConsumerWidget {
                   Text(
                     '10:00',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: isCompleted ? Colors.grey : colors.onSurface,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18,
+                      color: isCompleted ? Colors.grey.shade600 : Colors.black,
                     ),
                   ),
                   Text(
                     'AM',
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.grey,
+                      fontWeight: FontWeight.bold,
+                      color:
+                          isCompleted ? Colors.grey.shade500 : Colors.black54,
                     ),
                   ),
                 ],
               ),
               const SizedBox(width: 16),
               Container(
-                width: 4,
+                width: 6,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: isCompleted ? Colors.grey : colors.secondary,
-                  borderRadius: BorderRadius.circular(2),
+                  color: isCompleted ? Colors.grey : const Color(0xFFFF94C1),
+                  borderRadius: BorderRadius.circular(3),
+                  border: Border.all(color: Colors.black, width: 1.5),
                 ),
               ),
               const SizedBox(width: 16),
@@ -194,9 +221,10 @@ class MyDayScreen extends ConsumerWidget {
                               ? 'Data Structures'
                               : 'Algorithm Lab',
                       style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: isCompleted ? Colors.grey : colors.onSurface,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w900,
+                        color:
+                            isCompleted ? Colors.grey.shade600 : Colors.black,
                         decoration:
                             isCompleted ? TextDecoration.lineThrough : null,
                       ),
@@ -204,15 +232,35 @@ class MyDayScreen extends ConsumerWidget {
                     const SizedBox(height: 4),
                     Text(
                       index == 0 ? 'Gym' : 'Room 402',
-                      style: const TextStyle(fontSize: 12, color: Colors.grey),
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color:
+                            isCompleted ? Colors.grey.shade500 : Colors.black54,
+                      ),
                     ),
                   ],
                 ),
               ),
               if (isCompleted)
-                const Icon(Icons.check_circle, color: Colors.green)
+                Container(
+                  decoration: const BoxDecoration(
+                    color: Color(0xFF7DE2D1),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(Icons.check_circle,
+                      color: Colors.black, size: 32),
+                )
               else
-                Icon(Icons.circle_outlined, color: Colors.grey.shade400),
+                Container(
+                  width: 32,
+                  height: 32,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.black, width: 3),
+                  ),
+                ),
             ],
           ),
         );

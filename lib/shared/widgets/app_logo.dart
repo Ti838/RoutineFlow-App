@@ -50,11 +50,11 @@ class AppLogo extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(size * 0.22),
-          boxShadow: [
+          border: Border.all(color: Colors.black, width: 2),
+          boxShadow: const [
             BoxShadow(
-              color: Colors.black.withAlpha(25),
-              blurRadius: 8,
-              offset: const Offset(0, 2),
+              color: Colors.black,
+              offset: Offset(3, 3),
             ),
           ],
         ),

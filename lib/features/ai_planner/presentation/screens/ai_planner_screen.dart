@@ -32,10 +32,14 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF1EBFF), // Soft Lavender
       appBar: AppBar(
-        title: const Text('AI Routine Scanner'),
+        title: const Text('AI Routine Scanner',
+            style: TextStyle(fontWeight: FontWeight.w900)),
+        backgroundColor: const Color(0xFFF1EBFF),
+        elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => context.go('/'),
         ),
       ),
@@ -44,12 +48,30 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Icon(Icons.document_scanner, size: 80, color: Colors.blue),
-            const SizedBox(height: 24),
+            Container(
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.black, width: 3),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black,
+                    offset: Offset(4, 4),
+                  )
+                ],
+              ),
+              child: const Icon(Icons.document_scanner,
+                  size: 80, color: Colors.black),
+            ),
+            const SizedBox(height: 32),
             const Text(
               'Upload a photo of your class schedule, and Gemini AI will automatically parse and add it to your timeline.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87),
             ),
             const SizedBox(height: 32),
             ElevatedButton.icon(
@@ -58,33 +80,51 @@ class _AiPlannerScreenState extends ConsumerState<AiPlannerScreen> {
                   ? const SizedBox(
                       width: 20,
                       height: 20,
-                      child: CircularProgressIndicator(strokeWidth: 2))
-                  : const Icon(Icons.camera_alt),
-              label: Text(
-                  _isAnalyzing ? 'Analyzing with Gemini...' : 'Scan Routine'),
+                      child: CircularProgressIndicator(
+                          strokeWidth: 2, color: Colors.black))
+                  : const Icon(Icons.camera_alt, color: Colors.black),
+              label: Text(_isAnalyzing ? 'Analyzing...' : 'Scan Routine',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 18)),
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.all(16),
+                backgroundColor: const Color(0xFFFF94C1),
+                foregroundColor: Colors.black,
+                padding: const EdgeInsets.all(20),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-              ),
+                    borderRadius: BorderRadius.circular(999)),
+                side: const BorderSide(color: Colors.black, width: 3),
+                elevation: 0,
+              ).copyWith(
+                  shadowColor: WidgetStateProperty.all(Colors.transparent)),
             ),
             const SizedBox(height: 32),
             if (_result.isNotEmpty)
               Container(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.green.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.green),
+                  color: const Color(0xFF7DE2D1),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(color: Colors.black, width: 3),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black,
+                      offset: Offset(4, 4),
+                    )
+                  ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text('Success!',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.green)),
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black,
+                            fontSize: 20)),
                     const SizedBox(height: 8),
-                    Text(_result),
+                    Text(_result,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87)),
                   ],
                 ),
               ),

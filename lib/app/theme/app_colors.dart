@@ -1,69 +1,68 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Google Stitch Base Obsidian & Slate Canvas
-  static const Color backgroundDark = Color(0xFF0B1326);
-  static const Color surfaceDark = Color(0xFF171F33);
-  static const Color surfaceElevated = Color(0xFF1E293B);
-  static const Color cardDark = Color(0xFF131B2E);
-  static const Color borderDark =
-      Color(0x1FFFFFFF); // 12% white subtle glass border
+  // Bubble UI Pastel Canvas
+  static const Color backgroundDark = Color(0xFF1E1E2C);
+  static const Color surfaceDark = Color(0xFF2A2A3D);
+  static const Color surfaceElevated = Color(0xFF383850);
+  static const Color cardDark = Color(0xFF2A2A3D);
+  static const Color borderDark = Color(0x33FFFFFF);
 
-  // Light Canvas (Fallback)
-  static const Color backgroundLight = Color(0xFFF8FAFC);
+  // Light Canvas (Bubbly Off-White)
+  static const Color backgroundLight = Color(0xFFFAFAFA);
   static const Color surfaceLight = Color(0xFFFFFFFF);
-  static const Color cardLight = Color(0xFFF1F5F9);
-  static const Color borderLight = Color(0xFFE2E8F0);
+  static const Color cardLight = Color(0xFFFFFFFF);
+  static const Color borderLight = Color(0xFF000000); // Thick black borders
 
-  // Core Brand Tokens (Stitch Routine Flow Identity)
-  static const Color primary = Color(0xFF38BDF8); // Electric Sky
-  static const Color primaryLight = Color(0xFF8ED5FF);
-  static const Color primaryDark = Color(0xFF0284C7);
-  static const Color primaryContainer = Color(0x2638BDF8); // 15% Cyan
+  // Core Brand Tokens (Soft Bubbly Palette)
+  static const Color primary = Color(0xFFFF94C1); // Soft Pink
+  static const Color primaryLight = Color(0xFFFFB3D4);
+  static const Color primaryDark = Color(0xFFF070A1);
+  static const Color primaryContainer = Color(0xFFFFE0ED);
 
-  static const Color secondary = Color(0xFF6366F1); // Vibrant Violet
-  static const Color secondaryLight = Color(0xFFC0C1FF);
-  static const Color secondaryContainer = Color(0x266366F1); // 15% Violet
+  static const Color secondary = Color(0xFFB18BFF); // Soft Lavender
+  static const Color secondaryLight = Color(0xFFD4C2FF);
+  static const Color secondaryContainer = Color(0xFFF1EBFF);
 
   // Category & Functional Accents
-  static const Color university = Color(0xFF38BDF8); // Academic Lecture Blue
-  static const Color universityContainer = Color(0x2638BDF8);
+  static const Color university = Color(0xFFFFD464); // Bubbly Yellow
+  static const Color universityContainer = Color(0xFFFFF7E0);
 
-  static const Color study = Color(0xFF10B981); // Emerald Momentum
-  static const Color studyContainer = Color(0x2610B981);
+  static const Color study = Color(0xFF7DE2D1); // Mint Green
+  static const Color studyContainer = Color(0xFFE4F9F6);
 
-  static const Color freeTime = Color(0xFF10B981); // Free-Time Slot Green
-  static const Color freeTimeContainer = Color(0x2610B981);
+  static const Color freeTime = Color(0xFF7DE2D1);
+  static const Color freeTimeContainer = Color(0xFFE4F9F6);
 
-  static const Color task = Color(0xFF6366F1); // Study Task Violet
-  static const Color exam = Color(0xFFF59E0B); // Exam Amber
+  static const Color task = Color(0xFFB18BFF);
+  static const Color exam = Color(0xFFFF94C1);
 
-  static const Color personal = Color(0xFFEC4899); // Habit / Personal Pink
-  static const Color personalLight = Color(0xFFF472B6);
-  static const Color personalContainer = Color(0x26EC4899);
+  static const Color personal = Color(0xFFFFB56A); // Peach
+  static const Color personalLight = Color(0xFFFFD3A8);
+  static const Color personalContainer = Color(0xFFFFF0E1);
 
-  // Semantic Alerts & Conflict Detection
-  static const Color warning = Color(0xFFF59E0B); // Amber Overlap Alert
-  static const Color warningContainer = Color(0x26F59E0B);
+  // Semantic Alerts
+  static const Color warning = Color(0xFFFFD464);
+  static const Color warningContainer = Color(0xFFFFF7E0);
 
-  static const Color conflict = Color(0xFFF43F5E); // Rose Conflict
-  static const Color conflictContainer = Color(0x26F43F5E);
+  static const Color conflict = Color(0xFFFF6B6B); // Soft Red
+  static const Color conflictContainer = Color(0xFFFFEAEA);
 
-  static const Color error = Color(0xFFF43F5E); // Rose Error
-  static const Color errorContainer = Color(0x26F43F5E);
+  static const Color error = Color(0xFFFF6B6B);
+  static const Color errorContainer = Color(0xFFFFEAEA);
 
-  static const Color success = Color(0xFF10B981); // Checkmark Green
-  static const Color successContainer = Color(0x2610B981);
+  static const Color success = Color(0xFF7DE2D1);
+  static const Color successContainer = Color(0xFFE4F9F6);
 
-  static const Color ongoing = Color(0xFF38BDF8); // Ongoing Activity Sky Blue
-  static const Color ongoingContainer = Color(0x2638BDF8);
+  static const Color ongoing = Color(0xFF86B3FF); // Soft Blue
+  static const Color ongoingContainer = Color(0xFFE7F0FF);
 
   // Typography Colors
-  static const Color textPrimaryDark = Color(0xFFDAE2FD);
-  static const Color textSecondaryDark = Color(0xFFBDC8D1);
-  static const Color textMutedDark = Color(0xFF87929A);
+  static const Color textPrimaryDark = Color(0xFFFFFFFF);
+  static const Color textSecondaryDark = Color(0xFFE0E0E0);
+  static const Color textMutedDark = Color(0xFFA0A0A0);
 
-  static const Color textPrimaryLight = Color(0xFF0F172A);
-  static const Color textSecondaryLight = Color(0xFF475569);
-  static const Color textMutedLight = Color(0xFF94A3B8);
+  static const Color textPrimaryLight = Color(0xFF1E1E1E); // Bold almost black
+  static const Color textSecondaryLight = Color(0xFF6B6B6B);
+  static const Color textMutedLight = Color(0xFFA0A0A0);
 }

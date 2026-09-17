@@ -52,7 +52,7 @@ flutter build apk --release
 ```
 
 ## 🎨 UI Overview
-The application follows a modern **Material 3** design language, using a custom dynamic color palette and Google Fonts (`Poppins` and `Inter`) to give it a sharp, professional look. The app prominently features the **RoutineFlow Logo** across the splash screen, auth screen, and headers.
+The application follows a modern **Neo-Brutalist & Premium Bubbly** design language, using a custom dynamic pastel color palette (Bubblegum Pink, Mint Green, Lavender), thick black borders, hard drop shadows, and Google Fonts (`Poppins` and `Inter`) to give it a sharp, extremely playful look. The app prominently features the **RoutineFlow Logo** across the splash screen, auth screen, and headers.
 
 ---
 *Built with ❤️ by **TIMON**.*
